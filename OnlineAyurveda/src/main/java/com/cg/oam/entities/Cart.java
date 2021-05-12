@@ -1,47 +1,58 @@
 package com.cg.oam.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cg_cart")
+@Table(name = "cg_cart")
 public class Cart {
-	
+
 	@Id
-	@Column(name="cart_id")
-	private int cartId;
-	
-	
-	private Cart_Medicine cartMedicine;
-	
-	
-	private Customer customer;
-	
-	public int getCartId() {
+	@Column(name = "cart_id")
+	private Integer cartId;
+
+	@Column(name = "Medicine")
+	private Medicine meds;
+
+	@Column(name = "quantity")
+	private Integer qty;
+
+	private Customer cust;
+
+	public Integer getCartId() {
 		return cartId;
 	}
-	public void setCartId(int cartId) {
+
+	public void setCartId(Integer cartId) {
 		this.cartId = cartId;
 	}
-	public Cart_Medicine getCartMedicine() {
-		return cartMedicine;
+
+	public Medicine getMeds() {
+		return meds;
 	}
-	public void setCartMedicine(Cart_Medicine cartMedicine) {
-		this.cartMedicine = cartMedicine;
+
+	public void setMeds(Medicine meds) {
+		this.meds = meds;
 	}
-	public Customer getCustomer() {
-		return customer;
+
+	public Integer getQty() {
+		return qty;
 	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+
+	public void setQty(Integer qty) {
+		this.qty = qty;
 	}
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return cartId + " " + cartMedicine + " " + customer;
+
+	public Customer getCust() {
+		return cust;
 	}
-	
-	
+
+	public void setCust(Customer cust) {
+		this.cust = cust;
+	}	
 }

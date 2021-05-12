@@ -4,31 +4,32 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cg_order")
+@Table(name = "cg_order")
 public class Order {
 
 	@Id
-	@Column(name="order_id")
+	@Column(name = "order_id")
 	private int orderId;
-	
-	@Column(name="order_date")
-	private LocalDate orderDate;
-	
 
-	private Order_Medicine orderMedicine;
-	
-	@Column(name="dispatch_date")
+	@Column(name = "order_date")
+	private LocalDate orderDate;
+
+	@Column(name = "dispatch_date")
 	private LocalDate dispatchDate;
-	
-	@Column(name="total_cost")
+
+	@Column(name = "total_cost")
 	private float totalCost;
-	
-	
-	private Customer customer;
+
+	private Customer customer_order = new Customer();
+
+//	private Order_Medicine orderMedicine;
 
 	public int getOrderId() {
 		return orderId;
@@ -46,13 +47,13 @@ public class Order {
 		this.orderDate = orderDate;
 	}
 
-	public Order_Medicine getOrderMedicine() {
-		return orderMedicine;
-	}
-
-	public void setOrderMedicine(Order_Medicine orderMedicine) {
-		this.orderMedicine = orderMedicine;
-	}
+//	public Order_Medicine getOrderMedicine() {
+//		return orderMedicine;
+//	}
+//
+//	public void setOrderMedicine(Order_Medicine orderMedicine) {
+//		this.orderMedicine = orderMedicine;
+//	}
 
 	public LocalDate getDispatchDate() {
 		return dispatchDate;
@@ -70,12 +71,12 @@ public class Order {
 		this.totalCost = totalCost;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public Customer getCustomer_order() {
+		return customer_order;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomer_order(Customer customer_order) {
+		this.customer_order = customer_order;
 	}
 
 	@Override
@@ -83,7 +84,5 @@ public class Order {
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
-	
-	
-	
+
 }
