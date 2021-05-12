@@ -3,6 +3,7 @@ package com.cg.oam.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,7 +14,7 @@ public class Order_Medicine {
 	@Column(name="order_medicine_id")
 	private int orderMedicineId;
 	
-	
+	@OneToOne
 	private Medicine medicine;
 	
 	@Column(name="qty")

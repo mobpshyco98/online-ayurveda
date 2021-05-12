@@ -6,7 +6,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "cg_cart")
@@ -16,12 +19,15 @@ public class Cart {
 	@Column(name = "cart_id")
 	private Integer cartId;
 
+	@OneToMany
+	@JsonIgnore
 	@Column(name = "Medicine")
 	private Medicine meds;
 
 	@Column(name = "quantity")
 	private Integer qty;
 
+	@OneToOne
 	private Customer cust;
 
 	public Integer getCartId() {
