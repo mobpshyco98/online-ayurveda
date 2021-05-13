@@ -19,17 +19,20 @@ public class Cart {
 	@Column(name = "cart_id")
 	private Integer cartId;
 
-	@OneToMany
-	@JsonIgnore
-	@Column(name = "Medicine")
-	private Medicine meds;
+//	@OneToMany
+//	@JsonIgnore
+//	@Column(name = "Medicine")
+//	private Medicine meds;
 
 	@Column(name = "quantity")
 	private Integer qty;
 
 	@OneToOne
-	private Customer cust;
+	private Customer cust ;
 
+	@OneToMany
+	private Set<Medicine> meds;
+	
 	public Integer getCartId() {
 		return cartId;
 	}
@@ -38,13 +41,13 @@ public class Cart {
 		this.cartId = cartId;
 	}
 
-	public Medicine getMeds() {
-		return meds;
-	}
-
-	public void setMeds(Medicine meds) {
-		this.meds = meds;
-	}
+//	public Medicine getMeds() {
+//		return meds;
+//	}
+//
+//	public void setMeds(Medicine meds) {
+//		this.meds = meds;
+//	}
 
 	public Integer getQty() {
 		return qty;

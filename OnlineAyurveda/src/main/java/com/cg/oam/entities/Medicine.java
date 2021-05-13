@@ -5,7 +5,9 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -32,8 +34,13 @@ public class Medicine {
 	@Column(name="company_name")
 	private String companyName;
 	
-	@ManyToOne
-	private Category category;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "catergory_id", referencedColumnName = "category_id" )
+	private Category category = new Category();
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "")
+	private Cart cart_meds = new Cart();
 	
 	public String getMedicineId() {
 		return medicineId;

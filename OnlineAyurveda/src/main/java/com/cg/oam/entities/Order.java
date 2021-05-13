@@ -27,6 +27,8 @@ public class Order {
 	@Column(name = "total_cost")
 	private float totalCost;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
 	private Customer customer_order = new Customer();
 
 //	private Order_Medicine orderMedicine;
