@@ -5,6 +5,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -27,11 +29,13 @@ public class Cart {
 	@Column(name = "quantity")
 	private Integer qty;
 
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "cust_id",referencedColumnName = "customer_id")
 	private Customer cust ;
 
-	@OneToMany
-	private Set<Medicine> meds;
+	@ManyToOne
+	@JoinColumn(name = "medicine_id",referencedColumnName = "medicine_id")
+	private Medicine medicine;
 	
 	public Integer getCartId() {
 		return cartId;

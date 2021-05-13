@@ -22,22 +22,29 @@ public class Customer {
 	@Column(name = "customer_name")
 	private String customerName;
 
+	@Column(name = "contact_no")
+	private String contactNo;
+
+	@Column(name = "address")
+	private String address;
+
+	@Column(name = "location")
+	private String location;
+
 	@OneToMany(mappedBy = "customer_order")
 	@JsonIgnore
-	private Set<Order> customer_order;
+	private Set<OrderMedicine> customer_order;
 
-	@OneToOne
-	private Cart cart; 
 	
-	Customer() {
-		
+	public Customer() {
+
 	}
 
-	public Set<Order> getCustomer_order() {
+	public Set<OrderMedicine> getCustomer_order() {
 		return customer_order;
 	}
 
-	public void setCustomer_order(Set<Order> customer_order) {
+	public void setCustomer_order(Set<OrderMedicine> customer_order) {
 		this.customer_order = customer_order;
 	}
 
@@ -57,7 +64,6 @@ public class Customer {
 		this.customerName = customerName;
 	}
 
-	
 //	@Override
 //	public String toString() {
 //		// TODO Auto-generated method stub
