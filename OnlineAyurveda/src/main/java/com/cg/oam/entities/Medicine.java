@@ -36,6 +36,12 @@ public class Medicine {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "catergory_id", referencedColumnName = "category_id")
 	private Category category = new Category();
+	
+	@Column(name = "stock")
+	private Integer stock;
+	
+	@Column(name = "image", length = 25)
+	private String image;
 
 	public String getMedicineId() {
 		return medicineId;
