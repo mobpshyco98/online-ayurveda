@@ -14,7 +14,7 @@ public class OrderMedicineDetails {
 
 	@Id
 	@Column(name = "order_medicine_id")
-	private int orderMedicineId;
+	private Integer orderMedicineId;
 
 	@ManyToOne
 	@JoinColumn(name = "medicine_id", referencedColumnName = "medicine_id")
@@ -27,11 +27,11 @@ public class OrderMedicineDetails {
 	@JoinColumn(name = "order_id",referencedColumnName = "order_id")
 	private OrderMedicine orderMedicine;
 	
-	public int getOrderMedicineId() {
+	public Integer getOrderMedicineId() {
 		return orderMedicineId;
 	}
 
-	public void setOrderMedicineId(int orderMedicineId) {
+	public void setOrderMedicineId(Integer orderMedicineId) {
 		this.orderMedicineId = orderMedicineId;
 	}
 

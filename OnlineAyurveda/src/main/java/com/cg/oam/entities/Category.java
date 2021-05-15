@@ -14,7 +14,7 @@ public class Category {
 
 	@Id
 	@Column(name = "category_id")
-	private int categoryId;
+	private Integer categoryId;
 
 	@Column(name = "category_name")
 	private String categoryName;
@@ -22,11 +22,11 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private Set<Medicine> meds;
 
-	public int getCategoryId() {
+	public Integer getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
 

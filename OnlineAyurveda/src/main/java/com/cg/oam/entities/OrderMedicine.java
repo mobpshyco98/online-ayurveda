@@ -16,7 +16,7 @@ public class OrderMedicine {
 
 	@Id
 	@Column(name = "order_id")
-	private int orderId;
+	private Integer orderId;
 
 	@Column(name = "order_date")
 	private LocalDate orderDate;
@@ -33,11 +33,11 @@ public class OrderMedicine {
 
 //	private Order_Medicine orderMedicine;
 
-	public int getOrderId() {
+	public Integer getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(int orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 
