@@ -1,13 +1,13 @@
 package com.cg.oam.exceptions;
 
-public class CustomerException extends Exception{
+public class CustomerNotFoundException extends Exception{
 
-	public CustomerException() {
+	public CustomerNotFoundException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomerException(String message) {
+	public CustomerNotFoundException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}

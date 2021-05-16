@@ -10,8 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.cg.oam.dto.CustDto;
+import com.cg.oam.dto.CustomerDto;
 import com.cg.oam.dto.SuccessMessage;
 import com.cg.oam.entities.Customer;
 import com.cg.oam.exceptions.ValidateCustomerException;
@@ -24,7 +23,7 @@ public class CustomerRestController {
 	CustomerServiceImpl customerService;
 	
 	@PostMapping("/addcustomer")
-	public SuccessMessage addCustomer(@Valid @RequestBody CustDto custDto, BindingResult br ) throws ValidateCustomerException {
+	public SuccessMessage addCustomer(@Valid @RequestBody CustomerDto custDto, BindingResult br ) throws ValidateCustomerException {
 		System.out.println("Add customer");
 		
 		if(br.hasErrors())
@@ -32,7 +31,7 @@ public class CustomerRestController {
 		
 		int cid = customerService.addCustomer(custDto);
 		
-		return new SuccessMessage("customer added with Cust ID " + cid);
+		return new SuccessMessage("customer added with Customer ID " + cid);
 		
 	}
 		

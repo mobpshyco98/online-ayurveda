@@ -5,14 +5,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.cg.oam.dto.ErrorMessage;
-import com.cg.oam.exceptions.CustomerException;
+import com.cg.oam.exceptions.CustomerNotFoundException;
 import com.cg.oam.exceptions.ValidateCustomerException;
 
 public class CustomerControllerAdvice {
 
-	@ExceptionHandler(CustomerException.class)
+	@ExceptionHandler(CustomerNotFoundException.class)
 	@ResponseStatus(code=HttpStatus.NOT_FOUND)
-	public ErrorMessage handleExceptionCustomerException(CustomerException ex) {
+	public ErrorMessage handleExceptionCustomerException(CustomerNotFoundException ex) {
 		
 		return new ErrorMessage(HttpStatus.NOT_FOUND.toString(),ex.getMessage());
 		
