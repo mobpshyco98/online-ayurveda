@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cg.oam.entities.OrderMedicineDetails;
 
-public interface IOrderMedDetailDao extends JpaRepository<OrderMedicineDetails, Integer>{
+public interface IOrderMedicineDetailDao extends JpaRepository<OrderMedicineDetails, Integer>{
 
 }
