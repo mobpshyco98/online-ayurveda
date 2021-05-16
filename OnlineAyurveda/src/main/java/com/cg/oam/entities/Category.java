@@ -22,6 +22,14 @@ public class Category {
 	@OneToMany(mappedBy = "category")
 	private Set<Medicine> meds;
 
+	public Set<Medicine> getMeds() {
+		return meds;
+	}
+
+	public void setMeds(Set<Medicine> meds) {
+		this.meds = meds;
+	}
+
 	public Integer getCategoryId() {
 		return categoryId;
 	}

@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,7 +20,7 @@ public class OrderMedicineDetails {
 	private Medicine medicine;
 
 	@Column(name = "qty")
-	private int qty;
+	private Integer qty;
 
 	@ManyToOne
 	@JoinColumn(name = "order_id",referencedColumnName = "order_id")
@@ -43,18 +42,18 @@ public class OrderMedicineDetails {
 		this.medicine = medicine;
 	}
 
-	public int getQty() {
+	public Integer getQty() {
 		return qty;
 	}
 
-	public void setQty(int qty) {
+	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return orderMedicineId + " " + medicine + " " + qty;
-	}
+//	@Override
+//	public String toString() {
+//		// TODO Auto-generated method stub
+//		return orderMedicineId + " " + medicine + " " + qty;
+//	}
 
 }

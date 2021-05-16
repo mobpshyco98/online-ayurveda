@@ -16,13 +16,13 @@ public class Medicine {
 
 	@Id
 	@Column(name = "medicine_id")
-	private String medicineId;
+	private Integer medicineId;
 
 	@Column(name = "medicine_name")
 	private String medicineName;
 
 	@Column(name = "medicine_cost")
-	private float medicineCost;
+	private Float medicineCost;
 
 	@Column(name = "mfd")
 	private LocalDate mfd;
@@ -36,18 +36,18 @@ public class Medicine {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "catergory_id", referencedColumnName = "category_id")
 	private Category category = new Category();
-	
+
 	@Column(name = "stock")
 	private Integer stock;
-	
+
 	@Column(name = "image", length = 25)
 	private String image;
 
-	public String getMedicineId() {
+	public Integer getMedicineId() {
 		return medicineId;
 	}
 
-	public void setMedicineId(String medicineId) {
+	public void setMedicineId(Integer medicineId) {
 		this.medicineId = medicineId;
 	}
 
@@ -59,11 +59,11 @@ public class Medicine {
 		this.medicineName = medicineName;
 	}
 
-	public float getMedicineCost() {
+	public Float getMedicineCost() {
 		return medicineCost;
 	}
 
-	public void setMedicineCost(float medicineCost) {
+	public void setMedicineCost(Float medicineCost) {
 		this.medicineCost = medicineCost;
 	}
 
@@ -99,10 +99,26 @@ public class Medicine {
 		this.category = category;
 	}
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+	public Integer getStock() {
+		return stock;
 	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+//	@Override
+//	public String toString() {
+//		// TODO Auto-generated method stub
+//		return super.toString();
+//	}
 
 }

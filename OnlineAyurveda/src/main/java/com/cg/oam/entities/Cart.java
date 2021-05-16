@@ -1,17 +1,11 @@
 package com.cg.oam.entities;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "cg_cart")
@@ -21,22 +15,17 @@ public class Cart {
 	@Column(name = "cart_id")
 	private Integer cartId;
 
-//	@OneToMany
-//	@JsonIgnore
-//	@Column(name = "Medicine")
-//	private Medicine meds;
-
-	@Column(name = "quantity")
+ 	@Column(name = "quantity")
 	private Integer qty;
 
 	@ManyToOne
-	@JoinColumn(name = "cust_id",referencedColumnName = "customer_id")
-	private Customer cust ;
+	@JoinColumn(name = "cust_id", referencedColumnName = "customer_id")
+	private Customer cust;
 
 	@ManyToOne
-	@JoinColumn(name = "medicine_id",referencedColumnName = "medicine_id")
+	@JoinColumn(name = "medicine_id", referencedColumnName = "medicine_id")
 	private Medicine medicine;
-	
+
 	public Integer getCartId() {
 		return cartId;
 	}
@@ -45,13 +34,6 @@ public class Cart {
 		this.cartId = cartId;
 	}
 
-//	public Medicine getMeds() {
-//		return meds;
-//	}
-//
-//	public void setMeds(Medicine meds) {
-//		this.meds = meds;
-//	}
 
 	public Integer getQty() {
 		return qty;
@@ -67,5 +49,15 @@ public class Cart {
 
 	public void setCust(Customer cust) {
 		this.cust = cust;
-	}	
+	}
+
+	public Medicine getMedicine() {
+		return medicine;
+	}
+
+	public void setMedicine(Medicine medicine) {
+		this.medicine = medicine;
+	}
+	
+	
 }

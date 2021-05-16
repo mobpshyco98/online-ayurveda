@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.cg.oam.entities.Category;
 
-public interface ICatDao extends JpaRepository<Category, Integer>{
+public interface ICategoryDao extends JpaRepository<Category, Integer>{
 
 }

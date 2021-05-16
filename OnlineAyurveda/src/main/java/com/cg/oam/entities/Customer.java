@@ -35,11 +35,6 @@ public class Customer {
 	@JsonIgnore
 	private Set<OrderMedicine> customer_order;
 
-	
-	public Customer() {
-
-	}
-
 	public Set<OrderMedicine> getCustomer_order() {
 		return customer_order;
 	}
@@ -63,6 +58,31 @@ public class Customer {
 	public void setCustomerName(String customerName) {
 		this.customerName = customerName;
 	}
+
+	public String getContactNo() {
+		return contactNo;
+	}
+
+	public void setContactNo(String contactNo) {
+		this.contactNo = contactNo;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
 
 //	@Override
 //	public String toString() {

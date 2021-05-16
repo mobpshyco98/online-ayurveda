@@ -31,8 +31,6 @@ public class OrderMedicine {
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
 	private Customer customer_order = new Customer();
 
-//	private Order_Medicine orderMedicine;
-
 	public Integer getOrderId() {
 		return orderId;
 	}
@@ -48,14 +46,6 @@ public class OrderMedicine {
 	public void setOrderDate(LocalDate orderDate) {
 		this.orderDate = orderDate;
 	}
-
-//	public Order_Medicine getOrderMedicine() {
-//		return orderMedicine;
-//	}
-//
-//	public void setOrderMedicine(Order_Medicine orderMedicine) {
-//		this.orderMedicine = orderMedicine;
-//	}
 
 	public LocalDate getDispatchDate() {
 		return dispatchDate;
@@ -81,10 +71,10 @@ public class OrderMedicine {
 		this.customer_order = customer_order;
 	}
 
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
-	}
+//	@Override
+//	public String toString() {
+//		// TODO Auto-generated method stub
+//		return super.toString();
+//	}
 
 }
