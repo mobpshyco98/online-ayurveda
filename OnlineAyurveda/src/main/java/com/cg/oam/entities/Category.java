@@ -4,8 +4,11 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +17,8 @@ public class Category {
 
 	@Id
 	@Column(name = "category_id")
+	@SequenceGenerator(name = "seq1", sequenceName = "cart_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq1")
 	private Integer categoryId;
 
 	@Column(name = "category_name")

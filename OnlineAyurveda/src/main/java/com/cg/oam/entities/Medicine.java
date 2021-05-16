@@ -5,9 +5,12 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +19,8 @@ public class Medicine {
 
 	@Id
 	@Column(name = "medicine_id")
+	@SequenceGenerator(name = "seq1", sequenceName = "cart_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq1")
 	private Integer medicineId;
 
 	@Column(name = "medicine_name")

@@ -2,9 +2,12 @@ package com.cg.oam.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,8 @@ public class OrderMedicineDetails {
 
 	@Id
 	@Column(name = "order_medicine_id")
+	@SequenceGenerator(name = "seq1", sequenceName = "cart_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq1")
 	private Integer orderMedicineId;
 
 	@ManyToOne

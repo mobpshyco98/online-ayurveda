@@ -1,26 +1,24 @@
 package com.cg.oam.dto;
 
-import com.cg.oam.entities.Medicine;
-
 public class CartDto {
 
 	private Integer cartId;
 
 	private Integer qty;
 
-	private CustomerDto cust;
+	private Integer custId;
 
-	private Medicine medicine;
+	private Integer medicineId;
 	
 	public CartDto() {
 		
 	}
 
-	public CartDto(Integer qty, CustomerDto cust, Medicine medicine) {
+	public CartDto(Integer qty, Integer custId, Integer medicineId) {
 		super();
 		this.qty = qty;
-		this.cust = cust;
-		this.medicine = medicine;
+		this.custId = custId;
+		this.medicineId = medicineId;
 	}
 
 	public Integer getCartId() {
@@ -39,20 +37,20 @@ public class CartDto {
 		this.qty = qty;
 	}
 
-	public CustomerDto getCust() {
-		return cust;
+	public Integer getCustId() {
+		return custId;
 	}
 
-	public void setCust(CustomerDto cust) {
-		this.cust = cust;
+	public void setCustId(Integer custId) {
+		this.custId = custId;
 	}
 
-	public Medicine getMedicine() {
-		return medicine;
+	public Integer getMedicineId() {
+		return medicineId;
 	}
 
-	public void setMedicine(Medicine medicine) {
-		this.medicine = medicine;
+	public void setMedicineId(Integer medicineId) {
+		this.medicineId = medicineId;
 	}
 
 }
