@@ -11,6 +11,6 @@ import com.cg.oam.entities.Cart;
 
 @Repository
 public interface ICartDao extends JpaRepository<Cart, Integer> {
-	@Query("from Cart c inner join fetch c.Customer cu where cu.CustomerId = :cust_id")
+	@Query("from Cart c inner join fetch c.cust cu where cu.customerId = :cust_id")
 	public List<Cart> viewByCustId(@Param("cust_id") Integer customerId);
 }
