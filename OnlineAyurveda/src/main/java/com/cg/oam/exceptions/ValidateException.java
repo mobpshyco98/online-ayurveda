@@ -4,23 +4,23 @@ import java.util.List;
 
 import org.springframework.validation.FieldError;
 
-public class ValidateCustomerException extends Exception {
+public class ValidateException extends Exception {
 
 	private List<FieldError> errors;
 
-	public ValidateCustomerException() {
+	public ValidateException() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public ValidateCustomerException(String message) {
+	public ValidateException(String message) {
 		super(message);
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public ValidateCustomerException(List<FieldError> errors) {
+	public ValidateException(List<FieldError> errors) {
 		super();
 		this.errors = errors;
 	}

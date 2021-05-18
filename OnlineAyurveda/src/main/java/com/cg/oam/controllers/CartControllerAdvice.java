@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.cg.oam.dto.ErrorMessage;
+import com.cg.oam.exceptions.CartIdInvalidException;
 import com.cg.oam.exceptions.CustomerNotFoundException;
 import com.cg.oam.exceptions.EmptyCartException;
 import com.cg.oam.exceptions.MedicineNotFoundException;
+import com.cg.oam.exceptions.ValidateException;
 
 @RestControllerAdvice
 public class CartControllerAdvice {
@@ -37,5 +39,18 @@ public class CartControllerAdvice {
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
 	public ErrorMessage handleExceptionEmptyCartException(EmptyCartException ex) {
 		return new ErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
+	}
+	
+	@ExceptionHandler(CartIdInvalidException.class)
+	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	public ErrorMessage handleExceptionCartIdInvalidException(CartIdInvalidException ex) {
+		return new ErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
+	}
+	
+	@ExceptionHandler(ValidateException.class)
+	@ResponseStatus(code=HttpStatus.FORBIDDEN)
+	public ErrorMessage handleValidateCustomerException(ValidateException ex) {
+		return new ErrorMessage(HttpStatus.FORBIDDEN.toString(), ex.getMessage());
+		
 	}
 }

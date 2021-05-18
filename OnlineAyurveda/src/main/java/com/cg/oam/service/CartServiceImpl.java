@@ -14,6 +14,7 @@ import com.cg.oam.dto.CartDto;
 import com.cg.oam.entities.Cart;
 import com.cg.oam.entities.Customer;
 import com.cg.oam.entities.Medicine;
+import com.cg.oam.exceptions.CartIdInvalidException;
 import com.cg.oam.exceptions.CustomerNotFoundException;
 import com.cg.oam.exceptions.EmptyCartException;
 import com.cg.oam.exceptions.MedicineNotFoundException;
@@ -60,15 +61,19 @@ public class CartServiceImpl implements ICartService {
 	}
 
 	@Override
-	public boolean removeItemsCartId(Integer cartId) throws NoSuchElementException {
+	public boolean removeItemsCartId(Integer cartId) throws CartIdInvalidException {
 		Optional<Cart> obj = cartdao.findById(cartId);
+		if(!obj.isPresent())
+			throw new CartIdInvalidException("id is invalid given");
 		cartdao.delete(obj.get());
 		return true;
 	}
 
 	@Override
-	public boolean qtyEdit(Integer cartId, Integer qty) throws NoSuchElementException {
+	public boolean qtyEdit(Integer cartId, Integer qty) throws CartIdInvalidException {
 		Optional<Cart> obj = cartdao.findById(cartId);
+		if(!obj.isPresent())
+			throw new CartIdInvalidException("id is invalid given");
 		obj.get().setQty(qty);
 		Cart cart = obj.get();
 		cartdao.save(cart);

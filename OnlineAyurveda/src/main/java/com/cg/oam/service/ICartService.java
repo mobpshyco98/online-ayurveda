@@ -15,9 +15,9 @@ public interface ICartService {
 
 	public boolean removeAllMedicines(Integer custId) throws CustomerNotFoundException;
 
-	public boolean removeItemsCartId(Integer cartId) throws NoSuchElementException;
+	public boolean removeItemsCartId(Integer cartId) throws CartIdInvalidException;
 
-	public boolean qtyEdit(Integer cartId, Integer qty) throws NoSuchElementException ;
+	public boolean qtyEdit(Integer cartId, Integer qty) throws CartIdInvalidException;
 
 	public List<Cart> viewByCustomerId(Integer customerId) throws CustomerNotFoundException;
 

@@ -1,17 +1,22 @@
 package com.cg.oam.dto;
 
+import javax.validation.constraints.NotNull;
+
 public class CartDto {
 
 	private Integer cartId;
-
-	private Integer qty;
-
-	private Integer custId;
-
-	private Integer medicineId;
 	
+	@NotNull(message = "qty cannot be null")
+	private Integer qty;
+	
+	@NotNull(message = "customerId cannot be null")
+	private Integer custId;
+	
+	@NotNull(message = "medicineId cannot be null")
+	private Integer medicineId;
+
 	public CartDto() {
-		
+
 	}
 
 	public CartDto(Integer qty, Integer custId, Integer medicineId) {

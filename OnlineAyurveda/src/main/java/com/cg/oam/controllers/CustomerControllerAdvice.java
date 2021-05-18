@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.cg.oam.dto.ErrorMessage;
 import com.cg.oam.exceptions.CustomerNotFoundException;
-import com.cg.oam.exceptions.ValidateCustomerException;
+import com.cg.oam.exceptions.ValidateException;
 
 public class CustomerControllerAdvice {
 
@@ -18,9 +18,9 @@ public class CustomerControllerAdvice {
 		
 	}
 	
-	@ExceptionHandler(ValidateCustomerException.class)
+	@ExceptionHandler(ValidateException.class)
 	@ResponseStatus(code=HttpStatus.BAD_REQUEST)
-	public ErrorMessage handleValidateCustomerException(ValidateCustomerException ex) {
+	public ErrorMessage handleValidateCustomerException(ValidateException ex) {
 		return new ErrorMessage(HttpStatus.BAD_REQUEST.toString(), ex.getMessage());
 		
 	}
