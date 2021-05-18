@@ -1,10 +1,5 @@
 package com.cg.oam.dto;
 
-import javax.validation.constraints.NotNull;
-
-import com.cg.oam.entities.Medicine;
-
-
 public class MedicineSpecificationsDto {
 
 

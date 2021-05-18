@@ -2,8 +2,6 @@ package com.cg.oam.dto;
 
 import java.time.LocalDate;
 
-import com.cg.oam.entities.Category;
-
 public class MedicineDto {
 
 	private Integer medicineId;
