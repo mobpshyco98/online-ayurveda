@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "cg_category")
 public class Category {
@@ -25,6 +27,7 @@ public class Category {
 	private String categoryName;
 
 	@OneToMany(mappedBy = "category")
+	@JsonIgnore
 	private Set<Medicine> meds;
 
 	public Set<Medicine> getMeds() {

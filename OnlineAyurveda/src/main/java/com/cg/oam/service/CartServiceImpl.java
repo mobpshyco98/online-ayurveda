@@ -22,7 +22,6 @@ import com.cg.oam.exceptions.MedicineNotFoundException;
 
 @Service
 
-
 public class CartServiceImpl implements ICartService {
 
 	@Autowired
@@ -53,8 +52,8 @@ public class CartServiceImpl implements ICartService {
 	}
 
 	@Override
-	public boolean removeAllMedicines(CartDto cartdto) throws CustomerNotFoundException {
-		List<Cart> lst = cartdao.viewByCustId(cartdto.getCustId());
+	public boolean removeAllMedicines(Integer custId) throws CustomerNotFoundException {
+		List<Cart> lst = cartdao.viewByCustId(custId);
 		if (!lst.isEmpty())
 			throw new CustomerNotFoundException("customer has no cart Items");
 		lst.forEach(e -> cartdao.delete(e));
@@ -62,9 +61,9 @@ public class CartServiceImpl implements ICartService {
 	}
 
 	@Override
-	public boolean removeItemsCartId(CartDto cartdto) throws CartIdInvalidException {
-		Optional<Cart> obj = cartdao.findById(cartdto.getCartId());
-		if (obj==null)
+	public boolean removeItemsCartId(Integer cartId) throws CartIdInvalidException {
+		Optional<Cart> obj = cartdao.findById(cartId);
+		if (obj == null)
 			throw new CartIdInvalidException("invalid cart id inserted");
 		cartdao.delete(obj.get());
 		return true;
@@ -73,16 +72,16 @@ public class CartServiceImpl implements ICartService {
 	@Override
 	public boolean qtyEdit(CartDto cartdto) throws CartIdInvalidException {
 		Optional<Cart> obj = cartdao.findById(cartdto.getCartId());
-		if (obj==null)
+		if (obj == null)
 			throw new CartIdInvalidException("invalid cart id inserted");
 		obj.get().setQty(cartdto.getQty());
 		return true;
 	}
 
 	@Override
-	public List<Cart> viewByCustomerId(CartDto cartdto) throws CustomerNotFoundException {
-		List<Cart> lst = cartdao.viewByCustId(cartdto.getCustId());
-		if (!lst.isEmpty())
+	public List<Cart> viewByCustomerId(Integer customerId) throws CustomerNotFoundException {
+		List<Cart> lst = cartdao.viewByCustId(customerId);
+		if (lst.isEmpty())
 			throw new CustomerNotFoundException("No cart items found for customer");
 		return lst;
 	}
@@ -90,7 +89,7 @@ public class CartServiceImpl implements ICartService {
 	@Override
 	public List<Cart> viewAllCartItems() throws EmptyCartException {
 		List<Cart> lst = cartdao.findAll();
-		if (!lst.isEmpty())
+		if (lst.isEmpty())
 			throw new EmptyCartException();
 		return lst;
 	}

@@ -12,13 +12,13 @@ import com.cg.oam.exceptions.MedicineNotFoundException;
 public interface ICartService {
 	public Integer addMedicineCart(CartDto cartdto) throws CustomerNotFoundException, MedicineNotFoundException;
 
-	public boolean removeAllMedicines(CartDto cartdto) throws CustomerNotFoundException;
+	public boolean removeAllMedicines(Integer custId) throws CustomerNotFoundException;
 
-	public boolean removeItemsCartId(CartDto cartdto) throws CartIdInvalidException;
+	public boolean removeItemsCartId(Integer cartId) throws CartIdInvalidException;
 
 	public boolean qtyEdit(CartDto cartdto) throws CartIdInvalidException;
 
-	public List<Cart> viewByCustomerId(CartDto cartdto) throws CustomerNotFoundException;
+	public List<Cart> viewByCustomerId(Integer customerId) throws CustomerNotFoundException;
 	
 	public List<Cart> viewAllCartItems() throws EmptyCartException;
 }

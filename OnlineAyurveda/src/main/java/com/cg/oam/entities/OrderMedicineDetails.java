@@ -55,10 +55,4 @@ public class OrderMedicineDetails {
 		this.qty = qty;
 	}
 
-//	@Override
-//	public String toString() {
-//		// TODO Auto-generated method stub
-//		return orderMedicineId + " " + medicine + " " + qty;
-//	}
-
 }
