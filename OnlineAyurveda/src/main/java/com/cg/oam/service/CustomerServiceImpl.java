@@ -1,5 +1,6 @@
 package com.cg.oam.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import com.cg.oam.dto.CustomerDto;
 import com.cg.oam.entities.Customer;
 import com.cg.oam.exceptions.CustomerNotFoundException;
 
-@Service("myser")
+@Service
 @Transactional
 public class CustomerServiceImpl implements ICustomerService {
 
@@ -34,19 +35,38 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	@Override
-	public Optional<Customer> viewCustomerById(Integer custId) throws CustomerNotFoundException {
+	public Customer viewCustomerById(Integer custId) throws CustomerNotFoundException {
 		// TODO Auto-generated method stub
-		if(!custDao.existsById(custId))
+		Optional<Customer> customer = custDao.findById(custId);
+		if(!customer.isPresent())
 			throw new CustomerNotFoundException("Customer not found");
 		
-		return custDao.findById(custId);
+		return customer.get();
 	}
 
 	@Override
-	public Customer viewCustomerByNo(String contactNo) {
+	public List<Customer> viewCustomer(String contactNo) throws CustomerNotFoundException {
 		// TODO Auto-generated method stub
-		
-		return null;
+		List<Customer> lst = custDao.viewCustomer(contactNo);
+		if(lst.isEmpty())
+			throw new CustomerNotFoundException();
+		return lst;
+	}
+
+	@Override
+	public String editCustomer(CustomerDto custDto) throws CustomerNotFoundException {
+		// TODO Auto-generated method stub
+		Optional<Customer> custopt = custDao.findById(custDto.getCustomerId());
+		if(!custopt.isPresent())
+			throw new CustomerNotFoundException("No customer found");
+		Customer customer = custopt.get();
+		customer.setCustomerId(custDto.getCustomerId());
+		customer.setCustomerName(custDto.getCustomerName());
+		customer.setContactNo(custDto.getContactNo());
+		customer.setAddress(custDto.getAddress());
+		customer.setLocation(custDto.getLocation());
+		Customer persistedCustomer = custDao.save(customer);
+		return "Edited successfully";
 	}
 
 
