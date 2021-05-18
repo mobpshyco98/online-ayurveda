@@ -4,18 +4,19 @@ import java.util.List;
 
 import org.springframework.validation.FieldError;
 
-public class ValidateException extends Exception {
+public class ValidateCustomerException extends Exception {
+
 	private List<FieldError> errors;
 
-	public ValidateException() {
+	public ValidateCustomerException() {
 		super();
 	}
 
-	public ValidateException(String message) {
+	public ValidateCustomerException(String message) {
 		super(message);
 	}
 
-	public ValidateException(List<FieldError> errors) {
+	public ValidateCustomerException(List<FieldError> errors) {
 		super();
 		this.errors = errors;
 	}
@@ -23,4 +24,5 @@ public class ValidateException extends Exception {
 	public List<FieldError> getErrors() {
 		return errors;
 	}
+
 }
