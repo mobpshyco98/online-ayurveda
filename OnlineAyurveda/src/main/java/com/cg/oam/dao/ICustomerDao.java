@@ -10,5 +10,5 @@ import com.cg.oam.entities.Customer;
 @Repository
 public interface ICustomerDao extends JpaRepository<Customer, Integer> {
 	public Customer findByCustomerId(Integer customerId);
-	public List<Customer> viewCustomer(String contactNo);
+//	public List<Customer> viewCustomer(String contactNo);
 }

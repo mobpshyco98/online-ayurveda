@@ -1,6 +1,7 @@
 package com.cg.oam.service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import com.cg.oam.dto.CartDto;
 import com.cg.oam.entities.Cart;
@@ -14,11 +15,11 @@ public interface ICartService {
 
 	public boolean removeAllMedicines(Integer custId) throws CustomerNotFoundException;
 
-	public boolean removeItemsCartId(Integer cartId) throws CartIdInvalidException;
+	public boolean removeItemsCartId(Integer cartId) throws NoSuchElementException;
 
-	public boolean qtyEdit(CartDto cartdto) throws CartIdInvalidException;
+	public boolean qtyEdit(Integer cartId, Integer qty) throws NoSuchElementException ;
 
 	public List<Cart> viewByCustomerId(Integer customerId) throws CustomerNotFoundException;
-	
+
 	public List<Cart> viewAllCartItems() throws EmptyCartException;
 }

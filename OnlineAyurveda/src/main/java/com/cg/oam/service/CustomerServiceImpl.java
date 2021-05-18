@@ -44,14 +44,14 @@ public class CustomerServiceImpl implements ICustomerService {
 		return customer.get();
 	}
 
-	@Override
-	public List<Customer> viewCustomer(String contactNo) throws CustomerNotFoundException {
-		// TODO Auto-generated method stub
-		List<Customer> lst = custDao.viewCustomer(contactNo);
-		if(lst.isEmpty())
-			throw new CustomerNotFoundException();
-		return lst;
-	}
+//	@Override
+//	public List<Customer> viewCustomer(String contactNo) throws CustomerNotFoundException {
+//		// TODO Auto-generated method stub
+//		List<Customer> lst = custDao.viewCustomer(contactNo);
+//		if(lst.isEmpty())
+//			throw new CustomerNotFoundException();
+//		return lst;
+//	}
 
 	@Override
 	public String editCustomer(CustomerDto custDto) throws CustomerNotFoundException {
@@ -68,6 +68,8 @@ public class CustomerServiceImpl implements ICustomerService {
 		Customer persistedCustomer = custDao.save(customer);
 		return "Edited successfully";
 	}
+
+	
 
 
 	

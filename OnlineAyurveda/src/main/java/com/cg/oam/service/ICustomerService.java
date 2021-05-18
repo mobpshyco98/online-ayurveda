@@ -13,7 +13,7 @@ public interface ICustomerService {
 	
 	public Integer addCustomer(CustomerDto custDto);
 	public Customer viewCustomerById(Integer eid) throws CustomerNotFoundException;
-	public List<Customer> viewCustomer(String contactNo) throws CustomerNotFoundException;
+//	public List<Customer> viewCustomer(String contactNo) throws CustomerNotFoundException;
 	public String editCustomer(CustomerDto custDto) throws CustomerNotFoundException;
 	
 }
