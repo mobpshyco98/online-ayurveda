@@ -18,7 +18,7 @@ public class MedicineDto {
 
 	private String companyName;
 
-	private Category category = new Category();
+	private Integer categoryId;
 
 	private Integer stock;
 
@@ -29,14 +29,14 @@ public class MedicineDto {
 	}
 
 	public MedicineDto(String medicineName, Float medicineCost, LocalDate mfd, LocalDate expiryDate, String companyName,
-			Category category, Integer stock, String image) {
+			Integer categoryId, Integer stock, String image) {
 		super();
 		this.medicineName = medicineName;
 		this.medicineCost = medicineCost;
 		this.mfd = mfd;
 		this.expiryDate = expiryDate;
 		this.companyName = companyName;
-		this.category = category;
+		this.categoryId = categoryId;
 		this.stock = stock;
 		this.image = image;
 	}
@@ -89,12 +89,12 @@ public class MedicineDto {
 		this.companyName = companyName;
 	}
 
-	public Category getCategory() {
-		return category;
+	public Integer getCategoryId() {
+		return categoryId;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategoryId(Integer categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public Integer getStock() {

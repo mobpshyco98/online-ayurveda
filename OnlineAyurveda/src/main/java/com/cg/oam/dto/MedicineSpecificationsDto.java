@@ -1,12 +1,11 @@
 package com.cg.oam.dto;
 
+import javax.validation.constraints.NotNull;
+
 import com.cg.oam.entities.Medicine;
 
 
 public class MedicineSpecificationsDto {
-
-	
-	private Integer specId;
 
 
 	private String specName;
@@ -15,26 +14,22 @@ public class MedicineSpecificationsDto {
 	private String specValue;
 
 	
-	private Medicine medicine;
+	private Integer medicineId;
 	
 	public MedicineSpecificationsDto() {
 		
 	}
 	
-	public MedicineSpecificationsDto(String specName, String specValue, Medicine medicine) {
+	public MedicineSpecificationsDto(String specName, String specValue, Integer medicineId) {
 		super();
 		this.specName = specName;
 		this.specValue = specValue;
-		this.medicine = medicine;
+		this.medicineId = medicineId;
 	}
 
-	public Integer getSpecId() {
-		return specId;
-	}
+	
 
-	public void setSpecId(Integer specId) {
-		this.specId = specId;
-	}
+	
 
 	public String getSpecName() {
 		return specName;
@@ -52,12 +47,12 @@ public class MedicineSpecificationsDto {
 		this.specValue = specValue;
 	}
 
-	public Medicine getMedicine() {
-		return medicine;
+	public Integer getMedicineId() {
+		return medicineId;
 	}
 
-	public void setMedicine(Medicine medicine) {
-		this.medicine = medicine;
+	public void setMedicineId(Integer medicineId) {
+		this.medicineId = medicineId;
 	}
 	
 	

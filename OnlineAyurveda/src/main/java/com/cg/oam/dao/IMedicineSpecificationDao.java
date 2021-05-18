@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 import com.cg.oam.entities.MedicineSpecifications;
 @Repository
 public interface IMedicineSpecificationDao extends JpaRepository<MedicineSpecifications, Integer>{
-
+	
 }

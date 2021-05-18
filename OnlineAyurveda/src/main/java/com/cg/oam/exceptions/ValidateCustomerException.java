@@ -10,13 +10,11 @@ public class ValidateCustomerException extends Exception {
 
 	public ValidateCustomerException() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
 	public ValidateCustomerException(String message) {
 		super(message);
-		// TODO Auto-generated constructor stub
 	}
 
 
