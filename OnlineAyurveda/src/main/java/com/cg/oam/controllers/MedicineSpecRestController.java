@@ -15,6 +15,7 @@ import com.cg.oam.dto.SuccessMessage;
 import com.cg.oam.exceptions.MedicineNotFoundException;
 import com.cg.oam.exceptions.ValidateException;
 import com.cg.oam.service.IMedicineSpecService;
+import com.cg.oam.util.MedicineSpecificationConstants;
 
 @RestController
 public class MedicineSpecRestController {
@@ -33,7 +34,7 @@ public class MedicineSpecRestController {
 			throw new ValidateException(br.getFieldErrors());
 
 		Integer obj = specService.addSpecs(medSpecsDto);
-		return new SuccessMessage("Medicine Specification Added" + obj);
+		return new SuccessMessage(MedicineSpecificationConstants.MEDICINE_SPEC_ADDED + obj);
 
 	}
 }

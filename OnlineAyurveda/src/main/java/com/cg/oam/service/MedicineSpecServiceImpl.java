@@ -15,6 +15,7 @@ import com.cg.oam.dto.MedicineSpecificationsDto;
 import com.cg.oam.entities.Medicine;
 import com.cg.oam.entities.MedicineSpecifications;
 import com.cg.oam.exceptions.MedicineNotFoundException;
+import com.cg.oam.util.MedicineSpecificationConstants;
 
 @Service
 public class MedicineSpecServiceImpl implements IMedicineSpecService {
@@ -31,9 +32,9 @@ public class MedicineSpecServiceImpl implements IMedicineSpecService {
 	@Transactional
 	public Integer addSpecs(MedicineSpecificationsDto medSpecsDto) throws MedicineNotFoundException {
 		Optional<Medicine> optMed = medDao.findById(medSpecsDto.getMedicineId());
-//		logger.info("" + optMed.isPresent());
+		logger.info("" + optMed.isPresent());
 		if (!optMed.isPresent())
-			throw new MedicineNotFoundException("Product Not Found"); // work required
+			throw new MedicineNotFoundException(MedicineSpecificationConstants.MEDICINE_NOT_FOUND); // work required
 
 		MedicineSpecifications medSpecs = new MedicineSpecifications();
 
