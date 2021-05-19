@@ -17,7 +17,6 @@ import com.cg.oam.dto.MedicineDto;
 import com.cg.oam.dto.SuccessMessage;
 import com.cg.oam.entities.Category;
 import com.cg.oam.entities.Medicine;
-import com.cg.oam.exceptions.CategoryNameNotFoundException;
 import com.cg.oam.exceptions.CategoryNotFoundException;
 import com.cg.oam.exceptions.MedicineNotFoundException;
 import com.cg.oam.service.ICategoryService;
@@ -33,7 +32,7 @@ public class CategoryRestContoller {
 
 	Logger logger = LoggerFactory.getLogger(CartRestController.class);
 
-	@PostMapping("addCategory")
+	@PostMapping("addcategory")
 	public SuccessMessage addCategory(@RequestBody CategoryDto categorydto, BindingResult br)
 			throws CategoryNotFoundException {
 		Integer categoryId = service.addCategory(categorydto);
@@ -50,17 +49,18 @@ public class CategoryRestContoller {
 		return categoryLst;
 	}
 
-	@GetMapping("viewallMedicinebycategory/{categoryName}")
-	public List<Medicine> getMedicineByCategoryName(@PathVariable("categoryName") String categoryName)
-			throws MedicineNotFoundException, CategoryNameNotFoundException {
+	@GetMapping("viewallmedicinebycategory/{categoryname}")
+	public List<Medicine> getMedicineByCategoryName(@PathVariable("categoryname") String categoryName)
+			throws MedicineNotFoundException, CategoryNotFoundException {
+		
 		List<Medicine> MedicineLst = medicine.getMedicineByCategoryName(categoryName);
 		if (MedicineLst.isEmpty())
-			throw new MedicineNotFoundException("No Product Found in this Category");
+			throw new MedicineNotFoundException("No Medicine Found in this Category");
 		return MedicineLst;
 	}
 
-	@PostMapping("addMedicine")
-	public SuccessMessage addMedicine(MedicineDto medicineDto) throws CategoryNotFoundException {
+	@PostMapping("addmedicine")
+	public SuccessMessage addMedicine(@RequestBody MedicineDto medicineDto) throws CategoryNotFoundException {
 		Integer medicineDetails = medicine.addMedicine(medicineDto);
 		return new SuccessMessage("Medicine Addded, ID is" + medicineDetails);
 	}

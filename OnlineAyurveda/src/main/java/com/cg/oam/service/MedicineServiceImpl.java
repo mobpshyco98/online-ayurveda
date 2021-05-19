@@ -29,7 +29,7 @@ public class MedicineServiceImpl implements IMedicineService {
 		Optional<Category> category = categorydao.findById(medicineDto.getCategoryId());
 		if (!category.isPresent())
 			throw new CategoryNotFoundException();
-	
+
 		Medicine newMedicine = new Medicine();
 		newMedicine.setMedicineId(medicineDto.getMedicineId());
 		newMedicine.setMfd(medicineDto.getMfd());
@@ -38,19 +38,23 @@ public class MedicineServiceImpl implements IMedicineService {
 		newMedicine.setMedicineName(medicineDto.getMedicineName());
 		newMedicine.setMedicineCost(medicineDto.getMedicineCost());
 		newMedicine.setStock(medicineDto.getStock());
-		
+
 		Category newCategory = category.get();
 		newMedicine.setCategory(newCategory);
-		
+
 		Medicine addedMedicine = medicinedao.save(newMedicine);
 		return addedMedicine.getMedicineId();
 	}
 
 	@Override
-	public List<Medicine> getMedicineByCategoryName(String categoryName) throws MedicineNotFoundException {
+	public List<Medicine> getMedicineByCategoryName(String categoryName)
+			throws CategoryNotFoundException, MedicineNotFoundException {
+		Category catergory = categorydao.getCategoryIdByName(categoryName);
+		if (catergory == null)
+			throw new CategoryNotFoundException("category not found");
 		List<Medicine> medicineList = medicinedao.medicineByCategoryName(categoryName);
 		if (medicineList.isEmpty())
-			throw new MedicineNotFoundException();
+			throw new MedicineNotFoundException("medicine not found for category");
 		return medicineList;
 
 	}
