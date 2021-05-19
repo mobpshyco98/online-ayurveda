@@ -37,7 +37,7 @@ public class CartServiceImpl implements ICartService {
 	public Integer addMedicineCart(CartDto cartdto) throws CustomerNotFoundException, MedicineNotFoundException {
 		Cart cart = new Cart();
 		Customer cust = null;
-		cust = custdao.findByCustomerId(cartdto.getCustId());
+		cust = custdao.viewByCustomerId(cartdto.getCustId());
 		Medicine meds = null;
 		meds = medsdao.findByMedicineId(cartdto.getMedicineId());
 		if (meds == null)
