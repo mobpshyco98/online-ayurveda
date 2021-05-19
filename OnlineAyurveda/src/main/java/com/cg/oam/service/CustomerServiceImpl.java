@@ -10,6 +10,7 @@ import com.cg.oam.dao.ICustomerDao;
 import com.cg.oam.dto.CustomerDto;
 import com.cg.oam.entities.Customer;
 import com.cg.oam.exceptions.CustomerNotFoundException;
+import com.cg.oam.exceptions.ValidateCustomerException;
 
 @Service
 @Transactional
@@ -44,14 +45,14 @@ public class CustomerServiceImpl implements ICustomerService {
 		return customer.get();
 	}
 
-//	@Override
-//	public List<Customer> viewCustomer(String contactNo) throws CustomerNotFoundException {
-//		// TODO Auto-generated method stub
-//		List<Customer> lst = custDao.viewCustomer(contactNo);
-//		if(lst.isEmpty())
-//			throw new CustomerNotFoundException();
-//		return lst;
-//	}
+	@Override
+	public List<Customer> viewCustomer(String contactNo) throws CustomerNotFoundException {
+		// TODO Auto-generated method stub
+		List<Customer> lst = custDao.viewCustomer(contactNo);
+		if(lst.isEmpty())
+			throw new CustomerNotFoundException();
+		return lst;
+	}
 
 	@Override
 	public String editCustomer(CustomerDto custDto) throws CustomerNotFoundException {
