@@ -11,8 +11,9 @@ import com.cg.oam.entities.Medicine;
 
 @Repository
 public interface IMedicineDao extends JpaRepository<Medicine, Integer> {
-	public Medicine findByMedicineId(Integer medicineId);
+	@Query("from Medicine m where m.medicineId = :medicineid")
+	public Medicine getMedicineByMedicineId(@Param("medicineid") Integer medicineId);
 
-	@Query("from Medicine m inner join m.category c where c.categoryName = :categoryName")
-	public List<Medicine> medicineByCategoryName(@Param("categoryName") String categoryName);
+	@Query("from Medicine m inner join m.category c where c.categoryName = :categoryname")
+	public List<Medicine> medicineByCategoryName(@Param("categoryname") String categoryName);
 }

@@ -13,5 +13,6 @@ public interface IMedicineService {
 
 	public List<Medicine> getMedicineByCategoryName(String categoryName) throws MedicineNotFoundException; 
 
+	public Medicine getMedicineByMedicineId(Integer medicineId) throws MedicineNotFoundException;
 }
 

@@ -4,7 +4,7 @@ import java.util.List;
 import com.cg.oam.dto.CategoryDto;
 import com.cg.oam.entities.Category;
 import com.cg.oam.exceptions.CategoryNotFoundException;
-import com.cg.oam.exceptions.ProductNotFoundException;
+
 
 
 public interface ICategoryService {
