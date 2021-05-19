@@ -4,7 +4,6 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,15 +25,15 @@ public class OrderMedicine {
 	@Column(name = "order_date")
 	private LocalDate orderDate;
 
-	@Column(name = "dispatch_date")
-	private LocalDate dispatchDate;
+	@Column(name = "order_status")
+	private String orderStatus;
 
 	@Column(name = "total_cost")
-	private float totalCost;
+	private double totalCost;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-	private Customer customer_order = new Customer();
+	private Customer customer;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -52,34 +51,32 @@ public class OrderMedicine {
 		this.orderDate = orderDate;
 	}
 
-	public LocalDate getDispatchDate() {
-		return dispatchDate;
+	public String getOrderStatus() {
+		return orderStatus;
 	}
 
-	public void setDispatchDate(LocalDate dispatchDate) {
-		this.dispatchDate = dispatchDate;
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
-	public float getTotalCost() {
+	public double getTotalCost() {
 		return totalCost;
 	}
 
-	public void setTotalCost(float totalCost) {
-		this.totalCost = totalCost;
+	public void setTotalCost(double d) {
+		this.totalCost = d;
 	}
 
-	public Customer getCustomer_order() {
-		return customer_order;
+	public Customer getCustomer() {
+		return customer;
 	}
 
-	public void setCustomer_order(Customer customer_order) {
-		this.customer_order = customer_order;
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 
-//	@Override
-//	public String toString() {
-//		// TODO Auto-generated method stub
-//		return super.toString();
-//	}
-
+	@Override
+	public String toString() {
+		return orderId + " " + orderDate + " " + totalCost + " " + orderStatus;
+	}
 }

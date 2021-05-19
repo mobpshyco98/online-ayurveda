@@ -6,7 +6,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.cg.oam.entities.Category;
-import com.cg.oam.exceptions.CategoryNameNotFoundException;
 
 @Repository
 public interface ICategoryDao extends JpaRepository<Category, Integer> {
