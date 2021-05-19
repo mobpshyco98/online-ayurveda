@@ -35,7 +35,7 @@ public class Customer {
 	@Column(name = "location")
 	private String location;
 
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer_order")
 	@JsonIgnore
 	private Set<OrderMedicine> customer_order;
 
