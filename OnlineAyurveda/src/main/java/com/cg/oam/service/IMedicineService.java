@@ -11,7 +11,7 @@ public interface IMedicineService {
 
     public Integer addMedicine(MedicineDto medicineDto)throws CategoryNotFoundException;
 
-	public List<Medicine> getMedicineByCategoryName(String categoryName) throws MedicineNotFoundException, CategoryNotFoundException ; 
+	public List<Medicine> getMedicineByCategoryName(String categoryName) throws MedicineNotFoundException; 
 
 }
 

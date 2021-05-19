@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -49,5 +50,16 @@ public class MedicineSpecRestController {
 		logger.info(medicineId + "");
 		return specService.getMedSpecsById(medicineId);
 	}
+	
+	@PutMapping("editspecs")
+	public SuccessMessage editMedicineSpecs(@RequestBody MedicineSpecificationsDto medSpecsDto, BindingResult br) throws MedicineNotFoundException, NoSpecsException, ValidateException{
+		
+		if(br.hasErrors())
+			throw new ValidateException(br.getFieldErrors());
+		
+		specService.editSpecs(medSpecsDto);
+		return new SuccessMessage(MedicineSpecificationConstants.SPEC_EDIT_SUCCESSFUL + medSpecsDto.getSpecId());
+	}
+	
 	
 }

@@ -11,10 +11,30 @@ public class MedicineSpecificationsDto {
 	
 	private Integer medicineId;
 	
+	
+	private Integer specId;
+	
+	
 	public MedicineSpecificationsDto() {
 		
 	}
 	
+	public MedicineSpecificationsDto(String specName, String specValue, Integer medicineId, Integer specId) {
+		super();
+		this.specName = specName;
+		this.specValue = specValue;
+		this.medicineId = medicineId;
+		this.specId = specId;
+	}
+	
+
+	public MedicineSpecificationsDto(Integer specId, String specName, String specValue) {
+		super();
+		this.specName = specName;
+		this.specValue = specValue;
+		this.specId = specId;
+	}
+
 	public MedicineSpecificationsDto(String specName, String specValue, Integer medicineId) {
 		super();
 		this.specName = specName;
@@ -22,9 +42,13 @@ public class MedicineSpecificationsDto {
 		this.medicineId = medicineId;
 	}
 
-	
+	public Integer getSpecId() {
+		return specId;
+	}
 
-	
+	public void setSpecId(Integer specId) {
+		this.specId = specId;
+	}
 
 	public String getSpecName() {
 		return specName;

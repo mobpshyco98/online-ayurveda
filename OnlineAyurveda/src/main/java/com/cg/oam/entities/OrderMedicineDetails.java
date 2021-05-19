@@ -65,9 +65,5 @@ public class OrderMedicineDetails {
 		this.qty = qty;
 	}
 	
-	@Override
-	public String toString() {
-		return orderMedicineId +"";
-	}
-
+	
 }
