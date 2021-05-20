@@ -26,7 +26,7 @@ public class CustomerRestController {
 	@Autowired
 	CustomerServiceImpl customerService;
 	
-	@PostMapping("/addcustomer")
+	@PostMapping("addcustomer")
 	public SuccessMessage addCustomer(@Valid @RequestBody CustomerDto custDto, BindingResult br ) throws ValidateException {
 		System.out.println("Add customer");
 		
