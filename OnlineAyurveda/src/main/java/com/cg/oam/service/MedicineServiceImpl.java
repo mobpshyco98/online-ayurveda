@@ -15,6 +15,7 @@ import com.cg.oam.entities.Category;
 import com.cg.oam.entities.Medicine;
 import com.cg.oam.exceptions.CategoryNotFoundException;
 import com.cg.oam.exceptions.MedicineNotFoundException;
+import com.cg.oam.util.MedicineConstants;
 
 @Service
 @Transactional
@@ -54,5 +55,12 @@ public class MedicineServiceImpl implements IMedicineService {
 		return medicineList;
 
 	}
-
+	
+	@Override
+	public Medicine getMedicineByMedicineId(Integer medicineId) throws MedicineNotFoundException {
+		Optional<Medicine> optMedicine = medicinedao.findById(medicineId);
+		if (!optMedicine.isPresent())
+			throw new MedicineNotFoundException(MedicineConstants.MEDICINE_NOT_FOUND);
+		return optMedicine.get();
+	}
 }
