@@ -1,4 +1,4 @@
-package com.cg;
+package com.cg.TestCart;
 
 import static org.mockito.Mockito.when;
 

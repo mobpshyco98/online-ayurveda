@@ -2,6 +2,8 @@ package com.cg.oam.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +24,12 @@ import com.cg.oam.exceptions.CategoryNameNotFoundException;
 import com.cg.oam.exceptions.CategoryNotFoundException;
 import com.cg.oam.exceptions.CustomerNotFoundException;
 import com.cg.oam.exceptions.MedicineNotFoundException;
+import com.cg.oam.exceptions.ValidateException;
 import com.cg.oam.service.ICategoryService;
 import com.cg.oam.service.IMedicineService;
 
 @RestController
-public class CrudRestContoller {
+public class CrudRestController {
 
 	@Autowired
 	private ICategoryService service;
@@ -61,16 +64,19 @@ public class CrudRestContoller {
 		return MedicineLst;
 	}
 
-	@PostMapping("addMedicine")
-	public SuccessMessage addMedicine(MedicineDto medicineDto) throws CategoryNotFoundException {
-		Integer medicineDetails = medicine.addMedicine(medicineDto);
-		return new SuccessMessage("Medicine Addded, ID is" + medicineDetails);
+	@PostMapping("addMedicinebycategory")
+	public SuccessMessage addMedicine(@Valid @RequestBody MedicineDto medicineDto, BindingResult br) throws CategoryNotFoundException, ValidateException {
+		if(br.hasErrors())
+			throw new ValidateException(br.getFieldErrors());
+		Integer medId = medicine.addMedicine(medicineDto);
+		
+		return new SuccessMessage("Medicine Addded, ID is " + medId);
 	}
-  
+
 	@GetMapping("viewmedicinebyid/{medicineid}")
 	public Medicine viewMedicineById(@PathVariable("medicineid") Integer medicineId) throws MedicineNotFoundException {
-		Medicine medicine1 = medicine.getMedicineByMedicineId(medicineId); 
+		Medicine medicine1 = medicine.getMedicineByMedicineId(medicineId);
 		return medicine1;
-		
+
 	}
 }
