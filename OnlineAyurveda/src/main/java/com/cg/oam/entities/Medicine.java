@@ -40,7 +40,7 @@ public class Medicine {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "catergory_id", referencedColumnName = "category_id")
-	private Category category = new Category();
+	private Category category;
 
 	@Column(name = "stock")
 	private Integer stock;

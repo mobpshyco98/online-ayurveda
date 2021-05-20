@@ -48,20 +48,43 @@ public class MedicineSpecServiceImpl implements IMedicineSpecService {
 	}
 
 	@Override
-	public List<MedicineSpecifications> getMedSpecsById(Integer medicineId) throws MedicineNotFoundException, NoSpecsException {
+	public List<MedicineSpecifications> getMedSpecsById(Integer medicineId)
+			throws MedicineNotFoundException, NoSpecsException {
 		Optional<Medicine> optMed = medDao.findById(medicineId);
-		
-		if(!optMed.isPresent())
+
+		if (!optMed.isPresent())
 			throw new MedicineNotFoundException(MedicineSpecificationConstants.MEDICINE_NOT_FOUND);
-		
+
 		List<MedicineSpecifications> lst = medSpecsDao.getSpecifications(medicineId);
-		
-		logger.info("" + lst.isEmpty());
-		if(lst.isEmpty())
+
+//		logger.info("" + lst.isEmpty());
+		if (lst.isEmpty())
 			throw new NoSpecsException(MedicineSpecificationConstants.MEDICINE_SPEC_EMPTY);
 		lst.sort((m1, m2) -> m1.getSpecName().compareTo(m2.getSpecName()));
 		return lst;
-		
+
+	}
+
+	@Override
+	@Transactional
+	public boolean editSpecs(MedicineSpecificationsDto medSpecsDto) throws MedicineNotFoundException, NoSpecsException {
+		Optional<Medicine> optMed = medDao.findById(medSpecsDto.getMedicineId());
+
+		if (!optMed.isPresent())
+			throw new MedicineNotFoundException(MedicineSpecificationConstants.MED_ID_WRONG);
+
+		Optional<MedicineSpecifications> medSpecs = medSpecsDao.findById(medSpecsDto.getSpecId());
+		if (!medSpecs.isPresent())
+			throw new NoSpecsException(MedicineSpecificationConstants.MEDICINE_SPEC_EMPTY);
+
+		MedicineSpecifications medSpecSet = medSpecs.get();
+
+		medSpecSet.setSpecName(medSpecsDto.getSpecName());
+		medSpecSet.setSpecValue(medSpecsDto.getSpecValue());
+
+		medSpecsDao.save(medSpecSet);
+
+		return true;
 	}
 
 }

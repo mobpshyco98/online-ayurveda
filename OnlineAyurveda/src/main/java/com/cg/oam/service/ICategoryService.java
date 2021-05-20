@@ -5,9 +5,11 @@ import com.cg.oam.dto.CategoryDto;
 import com.cg.oam.entities.Category;
 import com.cg.oam.exceptions.CategoryNotFoundException;
 
+
+
 public interface ICategoryService {
 	public Integer addCategory(CategoryDto categorydto);
 	public List<Category> viewAllCategory() throws CategoryNotFoundException;
-
+	//public List<ElectronicProductDetails> getProductDetailsByCategoryName(String categoryName) throws ProductNotFoundException;
 
 }

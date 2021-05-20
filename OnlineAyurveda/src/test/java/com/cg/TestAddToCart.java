@@ -46,8 +46,8 @@ public class TestAddToCart {
 		when(custdao.viewByCustomerId(1001)).thenReturn(new Customer());
 		when(custdao.viewByCustomerId(1478)).thenReturn(null);
 
-		when(medsdao.findByMedicineId(2001)).thenReturn(new Medicine());
-		when(medsdao.findByMedicineId(3214)).thenReturn(null);
+		when(medsdao.getMedicineByMedicineId(2001)).thenReturn(new Medicine());
+		when(medsdao.getMedicineByMedicineId(3214)).thenReturn(null);
 
 		Cart savedCart = new Cart();
 		savedCart.setCartId(1012);

@@ -2,6 +2,7 @@ package com.cg.oam.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -9,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "cg_order_medicine")
@@ -27,7 +29,7 @@ public class OrderMedicineDetails {
 	@Column(name = "qty")
 	private Integer qty;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "order_id",referencedColumnName = "order_id")
 	private OrderMedicine orderMedicine;
 	
@@ -46,6 +48,14 @@ public class OrderMedicineDetails {
 	public void setMedicine(Medicine medicine) {
 		this.medicine = medicine;
 	}
+	
+	public OrderMedicine getMediOrder() {
+		return orderMedicine;
+	}
+
+	public void setMediOrder(OrderMedicine orderMedicine) {
+		this.orderMedicine = orderMedicine;
+	}
 
 	public Integer getQty() {
 		return qty;
@@ -54,5 +64,6 @@ public class OrderMedicineDetails {
 	public void setQty(Integer qty) {
 		this.qty = qty;
 	}
-
+	
+	
 }
