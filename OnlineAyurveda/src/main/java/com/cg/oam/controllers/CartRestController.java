@@ -31,13 +31,14 @@ public class CartRestController {
 
 	@Autowired
 	private ICartService service;
-	
+
 	Logger logger = LoggerFactory.getLogger(CartRestController.class);
 
 	@PostMapping("addtocart") // done
 	public SuccessMessage addMedicineCart(@Valid @RequestBody CartDto cartdto, BindingResult br)
 			throws CustomerNotFoundException, MedicineNotFoundException, ValidateException {
 		System.out.println("adding items to cart");
+
 		if (br.hasErrors())
 			throw new ValidateException(br.getFieldErrors());
 		Integer cartId = service.addMedicineCart(cartdto);

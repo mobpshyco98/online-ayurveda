@@ -5,6 +5,11 @@ import java.util.List;
 import org.springframework.validation.FieldError;
 
 public class ValidateException extends Exception {
+
+	public void setErrors(List<FieldError> errors) {
+		this.errors = errors;
+	}
+
 	private List<FieldError> errors;
 
 	public ValidateException() {
@@ -23,4 +28,5 @@ public class ValidateException extends Exception {
 	public List<FieldError> getErrors() {
 		return errors;
 	}
+
 }

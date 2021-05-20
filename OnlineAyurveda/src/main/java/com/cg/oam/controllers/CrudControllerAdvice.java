@@ -51,9 +51,9 @@ public class CrudControllerAdvice {
 	}
 	
 	@ExceptionHandler(CategoryNotFoundException.class)
-	@ResponseStatus(code = HttpStatus.NOT_FOUND)
+	@ResponseStatus(code = HttpStatus.BAD_REQUEST)
 	public ErrorMessage handleExceptionCategoryNotFound(CategoryNotFoundException ex) {
-		return new ErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
+		return new ErrorMessage(HttpStatus.BAD_REQUEST.toString(), ex.getMessage());
 	}
 
 	@ExceptionHandler(CategoryNameNotFoundException.class)

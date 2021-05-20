@@ -75,7 +75,7 @@ public class MedicineSpecServiceImpl implements IMedicineSpecService {
 
 		Optional<MedicineSpecifications> medSpecs = medSpecsDao.findById(medSpecsDto.getSpecId());
 		if (!medSpecs.isPresent())
-			throw new NoSpecsException("Specification for the medicine not found");
+			throw new NoSpecsException(MedicineSpecificationConstants.MEDICINE_SPEC_EMPTY);
 
 		MedicineSpecifications medSpecSet = medSpecs.get();
 

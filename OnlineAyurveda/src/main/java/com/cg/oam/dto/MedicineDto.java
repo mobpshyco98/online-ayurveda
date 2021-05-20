@@ -2,24 +2,37 @@ package com.cg.oam.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.NotNull;
+
 public class MedicineDto {
 
 	private Integer medicineId;
 
+	@NotBlank(message = "medicineName cannot be blank ")
 	private String medicineName;
 
+	@NotNull(message = "medicine cost cannot be null")
 	private Float medicineCost;
 
+	@NotNull(message = "manufacturing date cannot be blank")
 	private LocalDate mfd;
 
+	@NotNull(message = "expiry date cannot be blank")
 	private LocalDate expiryDate;
 
+	@NotBlank(message = "company name cannot be blank")
 	private String companyName;
 
+	@NotNull(message = "category id cannot be null")
 	private Integer categoryId;
 
+	@NotNull(message = "stock no. cannot be blank")
 	private Integer stock;
 
+	@NotBlank(message = "Image cannot be blank")
 	private String image;
 
 	public MedicineDto() {

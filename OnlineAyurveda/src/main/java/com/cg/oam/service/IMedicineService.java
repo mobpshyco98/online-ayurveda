@@ -9,10 +9,9 @@ import com.cg.oam.exceptions.MedicineNotFoundException;
 
 public interface IMedicineService {
 
-    public Integer addMedicine(MedicineDto medicineDto)throws CategoryNotFoundException;
+	public Integer addMedicine(MedicineDto medicineDto) throws CategoryNotFoundException;
 
-	public List<Medicine> getMedicineByCategoryName(String categoryName) throws MedicineNotFoundException; 
+	public List<Medicine> getMedicineByCategoryName(String categoryName) throws MedicineNotFoundException;
 
 	public Medicine getMedicineByMedicineId(Integer medicineId) throws MedicineNotFoundException;
 }
-

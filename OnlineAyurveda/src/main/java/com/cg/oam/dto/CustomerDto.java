@@ -16,10 +16,21 @@ public class CustomerDto {
 
 	private String location;
 
-	private Set<OrderMedicine> customer_order;
+	private Integer customer_order;
 
 	public CustomerDto() {
+		
+	}
 
+	public CustomerDto(Integer customerId, String customerName, String contactNo, String address, String location,
+			Integer customer_order) {
+		super();
+		this.customerId = customerId;
+		this.customerName = customerName;
+		this.contactNo = contactNo;
+		this.address = address;
+		this.location = location;
+		this.customer_order = customer_order;
 	}
 
 	public CustomerDto(String customerName, String contactNo, String address, String location) {
@@ -31,7 +42,7 @@ public class CustomerDto {
 	}
 
 	public CustomerDto(String customerName, String contactNo, String address, String location,
-			Set<OrderMedicine> customer_order) {
+			Integer customer_order) {
 		super();
 		this.customerName = customerName;
 		this.contactNo = contactNo;
@@ -40,11 +51,11 @@ public class CustomerDto {
 		this.customer_order = customer_order;
 	}
 
-	public Set<OrderMedicine> getCustomer_order() {
+	public Integer getCustomer_order() {
 		return customer_order;
 	}
 
-	public void setCustomer_order(Set<OrderMedicine> customer_order) {
+	public void setCustomer_order(Integer customer_order) {
 		this.customer_order = customer_order;
 	}
 

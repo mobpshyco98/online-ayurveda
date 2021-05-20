@@ -33,6 +33,7 @@ public class MedicineServiceImpl implements IMedicineService {
 	
 		Medicine newMedicine = new Medicine();
 		newMedicine.setMedicineId(medicineDto.getMedicineId());
+		newMedicine.setCompanyName(medicineDto.getCompanyName());
 		newMedicine.setMfd(medicineDto.getMfd());
 		newMedicine.setExpiryDate(medicineDto.getExpiryDate());
 		newMedicine.setImage(medicineDto.getImage());

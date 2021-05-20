@@ -13,6 +13,7 @@ import com.cg.oam.dao.ICustomerDao;
 import com.cg.oam.dao.IMedicineDao;
 import com.cg.oam.dao.IOrderMedicineDao;
 import com.cg.oam.dao.IOrderMedicineDetailDao;
+import com.cg.oam.dto.OrderMedicineDto;
 import com.cg.oam.entities.Cart;
 import com.cg.oam.entities.Customer;
 import com.cg.oam.entities.Medicine;
@@ -39,16 +40,16 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 	
 	// Create Order
 	@Override
-	public Integer createOrder(Integer customerId) throws CustomerNotFoundException, EmptyCartException {
+	public Integer createOrder(OrderMedicineDto medicineDto) throws CustomerNotFoundException, EmptyCartException {
 		//updating the table cg_order_medicine
 		OrderMedicine orderMedicine = new OrderMedicine();
 		
-		Optional<Customer> optCust = customerDao.viewByCustomerId1(customerId);
+		Optional<Customer> optCust = customerDao.viewByCustomerId1(medicineDto.getCustomerId());
 		
 		if(!optCust.isPresent())
 			throw new CustomerNotFoundException(OrderConstants.CUSTOMER_NOT_FOUND);
 		Customer customer = optCust.get();
-		List<Cart> lstCart = cartDao.viewByCustId(customerId);
+		List<Cart> lstCart = cartDao.viewByCustId(medicineDto.getCustomerId());
 		if(lstCart.isEmpty())
 			throw new EmptyCartException(OrderConstants.BASKET_EMPTY);
 		
@@ -83,13 +84,13 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 	
 	//View Order by User Id
 	@Override
-	public List<OrderMedicine> viewOrderByUserId(Integer custId) throws CustomerNotFoundException, OrderMedicineNotFoundException {
+	public List<OrderMedicine> viewOrderByCustomerId(Integer custId) throws CustomerNotFoundException, OrderMedicineNotFoundException {
 		Optional<Customer> optCust = customerDao.viewByCustomerId1(custId);
 		
 		if(!optCust.isPresent())
 			throw new CustomerNotFoundException(OrderConstants.CUSTOMER_NOT_FOUND);
 		
-		List<OrderMedicine> lst = orderMedicineDao.viewOrderByUserId(custId);
+		List<OrderMedicine> lst = orderMedicineDao.viewOrderByCustomerId(custId);
 		
 		if(lst.isEmpty())
 			throw new OrderMedicineNotFoundException(OrderConstants.ORDER_EMPTY);
