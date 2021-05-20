@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class OrderMedicineDto {
 
 	private Integer orderId;
-
+	
 	private LocalDate orderDate;
 
 	private LocalDate dispatchDate;
@@ -14,7 +14,6 @@ public class OrderMedicineDto {
 
 	private CustomerDto customer_order = new CustomerDto();
 
-	
 	
 	public OrderMedicineDto(LocalDate orderDate, LocalDate dispatchDate, CustomerDto customer_order) {
 		super();
