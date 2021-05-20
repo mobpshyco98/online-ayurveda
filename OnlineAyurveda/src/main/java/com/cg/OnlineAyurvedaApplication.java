@@ -9,5 +9,4 @@ public class OnlineAyurvedaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(OnlineAyurvedaApplication.class, args);
 	}
-
 }

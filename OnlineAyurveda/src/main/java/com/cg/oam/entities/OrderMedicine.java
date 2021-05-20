@@ -26,11 +26,11 @@ public class OrderMedicine {
 	@Column(name = "order_date")
 	private LocalDate orderDate;
 
-	@Column(name = "dispatch_date")
-	private LocalDate dispatchDate;
+	@Column(name = "order_status")
+	private String orderStatus;
 
 	@Column(name = "total_cost")
-	private float totalCost;
+	private double totalCost;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
@@ -52,19 +52,19 @@ public class OrderMedicine {
 		this.orderDate = orderDate;
 	}
 
-	public LocalDate getDispatchDate() {
-		return dispatchDate;
+	public String getOrderStatus() {
+		return orderStatus;
 	}
-
-	public void setDispatchDate(LocalDate dispatchDate) {
-		this.dispatchDate = dispatchDate;
+	
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
-
-	public float getTotalCost() {
+	
+	public double getTotalCost() {
 		return totalCost;
 	}
 
-	public void setTotalCost(float totalCost) {
+	public void setTotalCost(double totalCost) {
 		this.totalCost = totalCost;
 	}
 
