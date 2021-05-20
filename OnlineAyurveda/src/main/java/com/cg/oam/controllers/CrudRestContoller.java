@@ -16,15 +16,17 @@ import com.cg.oam.dto.CategoryDto;
 import com.cg.oam.dto.MedicineDto;
 import com.cg.oam.dto.SuccessMessage;
 import com.cg.oam.entities.Category;
+import com.cg.oam.entities.Customer;
 import com.cg.oam.entities.Medicine;
 import com.cg.oam.exceptions.CategoryNameNotFoundException;
 import com.cg.oam.exceptions.CategoryNotFoundException;
+import com.cg.oam.exceptions.CustomerNotFoundException;
 import com.cg.oam.exceptions.MedicineNotFoundException;
 import com.cg.oam.service.ICategoryService;
 import com.cg.oam.service.IMedicineService;
 
 @RestController
-public class CategoryRestContoller {
+public class CrudRestContoller {
 
 	@Autowired
 	private ICategoryService service;
@@ -50,8 +52,8 @@ public class CategoryRestContoller {
 		return categoryLst;
 	}
 
-	@GetMapping("viewallMedicinebycategory/{categoryName}")
-	public List<Medicine> getMedicineByCategoryName(@PathVariable("categoryName") String categoryName)
+	@GetMapping("viewallmedicinebycategory/{categoryname}")
+	public List<Medicine> getMedicineByCategoryName(@PathVariable("categoryname") String categoryName)
 			throws MedicineNotFoundException, CategoryNameNotFoundException {
 		List<Medicine> MedicineLst = medicine.getMedicineByCategoryName(categoryName);
 		if (MedicineLst.isEmpty())
@@ -64,5 +66,11 @@ public class CategoryRestContoller {
 		Integer medicineDetails = medicine.addMedicine(medicineDto);
 		return new SuccessMessage("Medicine Addded, ID is" + medicineDetails);
 	}
-
+  
+	@GetMapping("viewmedicinebyid/{medicineid}")
+	public Medicine viewMedicineById(@PathVariable("medicineid") Integer medicineId) throws MedicineNotFoundException {
+		Medicine medicine1 = medicine.getMedicineByMedicineId(medicineId); 
+		return medicine1;
+		
+	}
 }
