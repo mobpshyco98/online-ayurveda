@@ -11,6 +11,7 @@ import com.cg.oam.dto.CustomerDto;
 import com.cg.oam.entities.Customer;
 import com.cg.oam.exceptions.CustomerNotFoundException;
 import com.cg.oam.exceptions.ValidateCustomerException;
+import com.cg.oam.exceptions.ValidateException;
 
 @Service
 @Transactional
@@ -46,12 +47,13 @@ public class CustomerServiceImpl implements ICustomerService {
 	}
 
 	@Override
-	public List<Customer> viewCustomer(String contactNo) throws CustomerNotFoundException {
+	public Optional<Customer> viewCustomer(String contactNo) throws CustomerNotFoundException {
 		// TODO Auto-generated method stub
-		List<Customer> lst = custDao.viewCustomer(contactNo);
-		if(lst.isEmpty())
-			throw new CustomerNotFoundException();
-		return lst;
+		//List<Customer> lst = custDao.viewCustomer(contactNo);
+		Optional<Customer> optcustomer = custDao.viewCustomer(contactNo);
+		if(optcustomer.isEmpty())
+			throw new CustomerNotFoundException("Customer not found");
+		return optcustomer;
 	}
 
 	@Override
