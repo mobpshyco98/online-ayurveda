@@ -51,7 +51,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		// TODO Auto-generated method stub
 		//List<Customer> lst = custDao.viewCustomer(contactNo);
 		Optional<Customer> optcustomer = custDao.viewCustomer(contactNo);
-		if(optcustomer.isEmpty())
+		if(!optcustomer.isPresent())
 			throw new CustomerNotFoundException("Customer not found");
 		return optcustomer;
 	}
