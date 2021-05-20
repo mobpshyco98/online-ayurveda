@@ -2,18 +2,26 @@ package com.cg.oam.dto;
 
 import java.util.Set;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
 import com.cg.oam.entities.OrderMedicine;
 
 public class CustomerDto {
 
 	private Integer customerId;
-
+	@NotBlank(message = "Customer name must not be blank")
+	@Pattern(regexp = "([a-zA-Z]+)|([a-zA-Z]+[\\s][a-zA-Z]+)", message = "Name must contain alphabets")
 	private String customerName;
 
+	@Size(min = 10, message = "Contact number must be a 10 digit number")
 	private String contactNo;
 
+	@NotBlank(message = "Address cannot be blank")
 	private String address;
 
+	@NotBlank(message = "Customer name must not be blank")
 	private String location;
 
 	private Set<OrderMedicine> customer_order;

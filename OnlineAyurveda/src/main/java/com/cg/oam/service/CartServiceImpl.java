@@ -1,7 +1,6 @@
 package com.cg.oam.service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,8 +73,8 @@ public class CartServiceImpl implements ICartService {
 		Optional<Cart> obj = cartdao.findById(cartId);
 		if(!obj.isPresent())
 			throw new CartIdInvalidException("id is invalid given");
-		obj.get().setQty(qty);
 		Cart cart = obj.get();
+		cart.setQty(qty);
 		cartdao.save(cart);
 		return true;
 	}

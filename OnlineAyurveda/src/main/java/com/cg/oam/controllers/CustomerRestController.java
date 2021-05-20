@@ -2,6 +2,7 @@ package com.cg.oam.controllers;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -26,7 +27,7 @@ public class CustomerRestController {
 	@Autowired
 	CustomerServiceImpl customerService;
 	
-	@PostMapping("/addcustomer")
+	@PostMapping("addcustomer")
 	public SuccessMessage addCustomer(@Valid @RequestBody CustomerDto custDto, BindingResult br ) throws ValidateException {
 		System.out.println("Add customer");
 		
@@ -47,9 +48,9 @@ public class CustomerRestController {
 	}
 	
 	@GetMapping("viewbycontactno/{contactno}")
-	public List<Customer> viewCustomer(@PathVariable("contactno") String contactNo) throws CustomerNotFoundException {
-		List<Customer> lst = customerService.viewCustomer(contactNo);
-		return lst;
+	public Optional<Customer> viewCustomer(@PathVariable("contactno") String contactNo) throws CustomerNotFoundException {
+		Optional<Customer> optcustomer = customerService.viewCustomer(contactNo);
+		return optcustomer;
 		
 	}
 }

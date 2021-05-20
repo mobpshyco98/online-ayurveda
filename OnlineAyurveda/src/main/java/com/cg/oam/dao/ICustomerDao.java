@@ -19,5 +19,5 @@ public interface ICustomerDao extends JpaRepository<Customer, Integer> {
 	public Optional<Customer> viewByCustomerId1(@Param("custId") Integer customerId);
 	
 	@Query("from Customer c where c.contactNo = :contactno")
-	public List<Customer> viewCustomer(@Param("contactno") String contactNo);
+	public Optional<Customer> viewCustomer(@Param("contactno") String contactNo);
 }

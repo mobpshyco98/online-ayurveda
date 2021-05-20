@@ -1,6 +1,8 @@
 package com.cg.oam.controllers;
 
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -50,7 +52,9 @@ public class CartControllerAdvice {
 	@ExceptionHandler(ValidateException.class)
 	@ResponseStatus(code=HttpStatus.FORBIDDEN)
 	public ErrorMessage handleValidateCustomerException(ValidateException ex) {
-		return new ErrorMessage(HttpStatus.FORBIDDEN.toString(), ex.getMessage());
+		 List<String> errors = ex.getErrors().stream()
+	                .map(err->err.getDefaultMessage()).collect(Collectors.toList());
+		return new ErrorMessage(HttpStatus.FORBIDDEN.toString(), errors);
 		
 	}
 }

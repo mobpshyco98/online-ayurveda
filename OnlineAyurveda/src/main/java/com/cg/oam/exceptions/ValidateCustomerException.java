@@ -25,4 +25,8 @@ public class ValidateCustomerException extends Exception {
 		return errors;
 	}
 
+	public void setErrors(List<FieldError> errors) {
+		this.errors = errors;
+	}
+
 }
