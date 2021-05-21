@@ -1,14 +1,11 @@
 package com.cg.oam.service;
 
 
-import java.util.List;
-import java.util.Optional;
 
+import java.util.Optional;
 import com.cg.oam.dto.CustomerDto;
 import com.cg.oam.entities.Customer;
 import com.cg.oam.exceptions.CustomerNotFoundException;
-import com.cg.oam.exceptions.ValidateCustomerException;
-import com.cg.oam.exceptions.ValidateException;
 
 public interface ICustomerService {
 

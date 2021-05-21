@@ -27,12 +27,4 @@ public class CustomerControllerAdvice {
 		List<String> errors = ex.getErrors().stream().map(e -> e.getDefaultMessage()).collect(Collectors.toList());
 		return new ErrorMessage(HttpStatus.BAD_REQUEST.toString(), errors);
 	}
-
-	
-//	@ExceptionHandler(ValidateException.class)
-//	@ResponseStatus(code=HttpStatus.BAD_REQUEST)
-//	public ErrorMessage handleValidateCustomerException(ValidateException ex) {
-//		return new ErrorMessage(HttpStatus.BAD_REQUEST.toString(), ex.getMessage());
-//		
-//	}
 }

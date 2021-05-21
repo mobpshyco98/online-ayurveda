@@ -43,7 +43,7 @@ public class Customer {
 		return customer_order;
 	}
 
-	public void setCustomer_order(Set<OrderMedicine> customer_order) {
+	public void setCustomerOrder(Set<OrderMedicine> customer_order) {
 		this.customer_order = customer_order;
 	}
 
@@ -87,11 +87,4 @@ public class Customer {
 		this.location = location;
 	}
 	
-
-//	@Override
-//	public String toString() {
-//		// TODO Auto-generated method stub
-//		return customerId + " " + customerName + " ";
-//	}
-
 }
