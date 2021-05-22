@@ -34,6 +34,23 @@ public class Category {
 		return meds;
 	}
 
+	public Category(Integer categoryId, String categoryName) {
+		super();
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+	}
+
+	public Category(Integer categoryId, String categoryName, Set<Medicine> meds) {
+		super();
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+		this.meds = meds;
+	}
+
+	public Category() {
+		super();
+	}
+
 	public void setMeds(Set<Medicine> meds) {
 		this.meds = meds;
 	}

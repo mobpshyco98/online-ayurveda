@@ -14,7 +14,7 @@ import com.cg.oam.exceptions.CategoryNameNotFoundException;
 import com.cg.oam.exceptions.CategoryNotFoundException;
 import com.cg.oam.exceptions.MedicineNotFoundException;
 import com.cg.oam.exceptions.ValidateException;
-public class CrudControllerAdvice {
+public class CatMedControllerAdvice {
 	@ExceptionHandler(MedicineNotFoundException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
 	public ErrorMessage handleExceptionMedicineNotFound(MedicineNotFoundException ex) {

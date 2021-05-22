@@ -17,13 +17,27 @@ import com.cg.oam.exceptions.CategoryNotFoundException;
 import com.cg.oam.exceptions.MedicineNotFoundException;
 import com.cg.oam.util.MedicineConstants;
 
+/**
+ * @author Arghya Sengupta
+ * @Version 
+ * Description - This service class contains the methods for adding a new medicine for a given category, view the medicines for a given category, view the medicine by Id
+ */
 @Service
 @Transactional
 public class MedicineServiceImpl implements IMedicineService {
 	@Autowired
-	private IMedicineDao medicinedao;
+	private IMedicineDao medicinedao;//repository object(autowired)
 	@Autowired
-	private ICategoryDao categorydao;
+	private ICategoryDao categorydao;//repository object(autowired)
+	
+	/**
+	 * Method: addMedicine
+	 * @Override: It is used to override the JpaRepository methods for performing CRUD operations. 
+	 * @Param CategoryDto catdto
+	 * @return Integer value i.e., medicine ID
+	 * Description: This methods returns the medicine ID after adding the medicine for a specific category instances in the database.
+	 * @CreatedAt: 
+	**/
 
 	@Override
 	public Integer addMedicine(MedicineDto medicineDto) throws CategoryNotFoundException {
@@ -48,6 +62,14 @@ public class MedicineServiceImpl implements IMedicineService {
 		return addedMedicine.getMedicineId();
 	}
 
+	/**
+	 * Method: ViewMedicineByCategory
+	 * @Override: It is used to override the JpaRepository methods for performing CRUD operations. 
+	 * @Param MedicineDto meds
+	 * @return List of medicine
+	 * Description: This methods returns the List of medicine for a given category instances from the database.
+	 * @CreatedAt: 
+	**/
 	@Override
 	public List<Medicine> getMedicineByCategoryName(String categoryName) throws MedicineNotFoundException {
 		List<Medicine> medicineList = medicinedao.medicineByCategoryName(categoryName);
@@ -57,6 +79,14 @@ public class MedicineServiceImpl implements IMedicineService {
 
 	}
 	
+	/**
+	 * Method: ViewMedicineByMedicineId
+	 * @Override: It is used to override the JpaRepository methods for performing CRUD operations. 
+	 * @Param MedicineDto meds
+	 * @return string
+	 * Description: This methods returns the name of medicine for a specific ID in the database.
+	 * @CreatedAt: 
+	**/
 	@Override
 	public Medicine getMedicineByMedicineId(Integer medicineId) throws MedicineNotFoundException {
 		Optional<Medicine> optMedicine = medicinedao.findById(medicineId);

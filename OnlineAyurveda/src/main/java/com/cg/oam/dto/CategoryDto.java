@@ -8,6 +8,12 @@ import com.cg.oam.entities.Medicine;
 public class CategoryDto {
 
 	
+	public CategoryDto(Integer categoryId, String categoryName) {
+		super();
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+	}
+
 	private Integer categoryId;
 
 
@@ -39,7 +45,11 @@ public class CategoryDto {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-
+    
+	public CategoryDto() {
+		
+	}
+	
 	public CategoryDto(String categoryName, Set<Medicine> meds) {
 		super();
 		this.categoryName = categoryName;

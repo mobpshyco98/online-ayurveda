@@ -1,16 +1,15 @@
 package com.cg.TestCart;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-
-import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-
-import static org.mockito.Mockito.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.cg.oam.dao.ICartDao;
@@ -24,7 +23,6 @@ import com.cg.oam.exceptions.CustomerNotFoundException;
 import com.cg.oam.exceptions.MedicineNotFoundException;
 import com.cg.oam.service.CartServiceImpl;
 import com.cg.oam.service.ICartService;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 public class TestAddToCart {
