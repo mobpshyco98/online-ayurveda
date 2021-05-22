@@ -1,24 +1,58 @@
 package com.cg.oam.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.cg.oam.util.MedicineSpecificationConstants;
+
 public class MedicineSpecificationsDto {
 
-
+	@NotBlank(message = MedicineSpecificationConstants.SPEC_NAME_REQUIRED)
 	private String specName;
 
-
+	@NotBlank(message = MedicineSpecificationConstants.SPEC_VALUE_REQUIRED)
 	private String specValue;
 
-	
+	@NotNull(message = MedicineSpecificationConstants.MEDICINE_ID_REQUIRED)
 	private Integer medicineId;
 	
-	
 	private Integer specId;
-	
-	
+
+
 	public MedicineSpecificationsDto() {
 		
 	}
 	
+	
+	public MedicineSpecificationsDto(String specName, String specValue) {
+		super();
+		this.specName = specName;
+		this.specValue = specValue;
+	}
+
+
+
+	public MedicineSpecificationsDto(String specName, Integer medicineId) {
+		super();
+		this.specName = specName;
+		this.medicineId = medicineId;
+	}
+	
+	
+	public MedicineSpecificationsDto(Integer medicineId, Integer specId) {
+		super();
+		this.medicineId = medicineId;
+		this.specId = specId;
+	}
+
+	
+	
+	public MedicineSpecificationsDto(Integer medicineId) {
+		super();
+		this.medicineId = medicineId;
+	}
+
+
 	public MedicineSpecificationsDto(String specName, String specValue, Integer medicineId, Integer specId) {
 		super();
 		this.specName = specName;

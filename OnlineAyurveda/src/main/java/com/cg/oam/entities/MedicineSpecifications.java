@@ -30,8 +30,33 @@ public class MedicineSpecifications {
 	@JoinColumn(name = "medicine_id", referencedColumnName = "medicine_id")
 	private Medicine medicine;
 
+	public MedicineSpecifications(String specName, String specValue) {
+		super();
+		this.specName = specName;
+		this.specValue = specValue;
+	}
+
+	public MedicineSpecifications(String specName, String specValue, Medicine medicine) {
+		super();
+		this.specName = specName;
+		this.specValue = specValue;
+		this.medicine = medicine;
+	}
+
+	
+	public MedicineSpecifications(Integer specId, String specName, String specValue) {
+		super();
+		this.specId = specId;
+		this.specName = specName;
+		this.specValue = specValue;
+	}
+
 	public Integer getSpecId() {
 		return specId;
+	}
+
+	public MedicineSpecifications() {
+		super();
 	}
 
 	public void setSpecId(Integer specId) {
