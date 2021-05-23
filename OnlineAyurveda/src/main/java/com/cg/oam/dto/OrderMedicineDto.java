@@ -2,18 +2,22 @@ package com.cg.oam.dto;
 
 import java.time.LocalDate;
 
+import javax.validation.constraints.NotNull;
+
 public class OrderMedicineDto {
-
+	
+	
 	private Integer orderId;
-
+	
 	private LocalDate orderDate;
 	
 	private String orderStatus;
 
 	//private LocalDate dispatchDate;
-
+	
 	private Double totalCost;
 	
+	@NotNull(message = "customerId cannot be null")
 	private Integer customerId;
 	
 	
@@ -64,10 +68,10 @@ public class OrderMedicineDto {
 		this.totalCost = totalCost;
 	}
 
-	public OrderMedicineDto(Integer orderId, LocalDate orderDate, String orderStatus, Double totalCost,
+	public OrderMedicineDto(LocalDate orderDate, String orderStatus, Double totalCost,
 			Integer customerId) {
 		super();
-		this.orderId = orderId;
+		//this.orderId = orderId;
 		this.orderDate = orderDate;
 		this.orderStatus = orderStatus;
 		this.totalCost = totalCost;

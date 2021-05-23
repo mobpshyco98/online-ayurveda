@@ -13,8 +13,7 @@ public interface IOrderedMedicineService {
 	
 	public Integer createOrder(OrderMedicineDto medicineDto) throws CustomerNotFoundException, EmptyCartException;
 		
-	public List<OrderMedicine> viewOrderByCustomerId(Integer custId) throws CustomerNotFoundException, OrderMedicineNotFoundException;
+	public List<OrderMedicine> viewOrderByCustomerId(Integer custId) throws OrderMedicineNotFoundException;
 	
 	public List<OrderMedicineDetails> displayOrderDetails(Integer orderId) throws OrderMedicineNotFoundException;
-
 }

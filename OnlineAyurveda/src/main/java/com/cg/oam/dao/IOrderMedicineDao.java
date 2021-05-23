@@ -14,7 +14,7 @@ import com.cg.oam.entities.OrderMedicine;
 public interface IOrderMedicineDao extends JpaRepository<OrderMedicine, Integer>{
 	// custom query
 		@Query("from OrderMedicine o inner join fetch o.customer_order c where c.customerId=:custid ")
-		public List<OrderMedicine> viewOrderByCustomerId(@Param("custid") Integer custId);
+		public List<OrderMedicine> viewOrderByCustId(@Param("custid") Integer custId);
 		
 		@Query("from OrderMedicine o where o.orderId=:ordid ")
 		public Optional<OrderMedicine> findById(@Param("ordid")Integer orderId);

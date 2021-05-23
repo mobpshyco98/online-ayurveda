@@ -1,6 +1,7 @@
 package com.cg.oam.dto;
 
 import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
 
 import com.cg.oam.entities.Medicine;
 import com.cg.oam.entities.OrderMedicine;
@@ -10,7 +11,8 @@ public class OrderMedicineDetailsDto {
 	private Integer orderMedicineId;
 
 	private Medicine medicine;
-
+	
+	@NotNull(message = "quantity cannot be null")
 	@Column(name = "qty")
 	private Integer qty;
 

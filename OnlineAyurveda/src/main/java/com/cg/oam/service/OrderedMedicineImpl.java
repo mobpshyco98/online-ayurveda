@@ -49,7 +49,7 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 		if(!optCust.isPresent())
 			throw new CustomerNotFoundException(OrderConstants.CUSTOMER_NOT_FOUND);
 		Customer customer = optCust.get();
-		List<Cart> lstCart = cartDao.viewByCustId(medicineDto.getCustomerId());
+		List<Cart> lstCart = cartDao.viewByCustId(customer.getCustomerId());
 		if(lstCart.isEmpty())
 			throw new EmptyCartException(OrderConstants.BASKET_EMPTY);
 		
@@ -71,7 +71,7 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 			cartDao.delete(cart);
 		}
 		
-		return orderMedicine.getOrderId();
+		return savedOrder.getOrderId();
 	}
 	public double findTotalCost(List<Cart> lstCart) {
 		double totalCost=0.0;
@@ -84,34 +84,34 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 	
 	//View Order by User Id
 	@Override
-	public List<OrderMedicine> viewOrderByCustomerId(Integer custId) throws CustomerNotFoundException, OrderMedicineNotFoundException {
-		Optional<Customer> optCust = customerDao.viewByCustomerId1(custId);
+	public List<OrderMedicine> viewOrderByCustomerId(Integer custId) throws OrderMedicineNotFoundException {
+		/**Optional<Customer> optCust = customerDao.viewByCustomerId1(custId);
 		
 		if(!optCust.isPresent())
-			throw new CustomerNotFoundException(OrderConstants.CUSTOMER_NOT_FOUND);
+			throw new CustomerNotFoundException(OrderConstants.CUSTOMER_NOT_FOUND);**/
 		
-		List<OrderMedicine> lst = orderMedicineDao.viewOrderByCustomerId(custId);
+		List<OrderMedicine> lst = orderMedicineDao.viewOrderByCustId(custId);
 		
 		if(lst.isEmpty())
 			throw new OrderMedicineNotFoundException(OrderConstants.ORDER_EMPTY);
 		
-		lst.sort((e1,e2)->e1.getOrderDate().compareTo(e2.getOrderDate()));
+		//lst.sort((e1,e2)->e1.getOrderDate().compareTo(e2.getOrderDate()));
 		return lst;
 	}
 	
 
 	@Override
 	public List<OrderMedicineDetails> displayOrderDetails(Integer orderId) throws OrderMedicineNotFoundException {
-		Optional<OrderMedicine> optOrder = orderMedicineDao.findById(orderId);
+		/**Optional<OrderMedicine> optOrder = orderMedicineDao.findById(orderId);
 		if(!optOrder.isPresent())
-			throw new OrderMedicineNotFoundException(OrderConstants.ORDER_NOT_FOUND);
+			throw new OrderMedicineNotFoundException(OrderConstants.ORDER_NOT_FOUND);**/
 		
 		List<OrderMedicineDetails> orderMediDetails = orderMedcineDetailDao.getMedicineDetailsInOrder(orderId);
 		
 		if(orderMediDetails.isEmpty())
 			throw new OrderMedicineNotFoundException(OrderConstants.ORDER_EMPTY);
 		
-		orderMediDetails.sort((e1,e2)->e1.getOrderMedicineId().compareTo(e2.getOrderMedicineId()));
+		//orderMediDetails.sort((e1,e2)->e1.getOrderMedicineId().compareTo(e2.getOrderMedicineId()));
 		
 		return orderMediDetails;
 	}
