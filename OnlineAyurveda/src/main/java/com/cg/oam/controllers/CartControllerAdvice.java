@@ -42,19 +42,18 @@ public class CartControllerAdvice {
 	public ErrorMessage handleExceptionEmptyCartException(EmptyCartException ex) {
 		return new ErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
 	}
-	
+
 	@ExceptionHandler(CartIdInvalidException.class)
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
 	public ErrorMessage handleExceptionCartIdInvalidException(CartIdInvalidException ex) {
 		return new ErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
 	}
-	
+
 	@ExceptionHandler(ValidateException.class)
-	@ResponseStatus(code=HttpStatus.FORBIDDEN)
+	@ResponseStatus(code = HttpStatus.FORBIDDEN)
 	public ErrorMessage handleValidateCustomerException(ValidateException ex) {
-		 List<String> errors = ex.getErrors().stream()
-	                .map(err->err.getDefaultMessage()).collect(Collectors.toList());
+		List<String> errors = ex.getErrors().stream().map(e -> e.getDefaultMessage()).collect(Collectors.toList());
 		return new ErrorMessage(HttpStatus.FORBIDDEN.toString(), errors);
-		
+
 	}
 }

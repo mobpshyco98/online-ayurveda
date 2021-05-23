@@ -18,24 +18,25 @@ import com.cg.oam.service.CustomerServiceImpl;
 class TestAddCustomer {
 
 	@Mock
-	private ICustomerDao custDao; //creating mock instance for DAO class
-	
+	private ICustomerDao custDao; // creating mock instance for DAO class
+
 	@InjectMocks
-	private CustomerServiceImpl service = new CustomerServiceImpl(); //creating new instance for Service class and injecting the mock instance
-	
+	private CustomerServiceImpl service = new CustomerServiceImpl(); // creating new instance for Service class and
+																		// injecting the mock instance
+
 	@BeforeEach
 	public void beforeEach() {
-	
+
 		Customer cust = new Customer();
 		cust.setCustomerId(1111);
 		when(custDao.save(any(Customer.class))).thenReturn(cust);
 	}
-	
+
 	@Test
-	@DisplayName(value="Testing customer for 1111")
+	@DisplayName(value = "Testing customer for 1111")
 	void testAddCustomer1() {
 		CustomerDto custDto = new CustomerDto();
 		custDto.setCustomerId(1111);
-		assertTrue(service.addCustomer(custDto)==1111);
+		assertTrue(service.addCustomer(custDto) == 1111);
 	}
 }
