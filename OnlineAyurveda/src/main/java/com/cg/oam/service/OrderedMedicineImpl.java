@@ -24,6 +24,14 @@ import com.cg.oam.exceptions.EmptyCartException;
 import com.cg.oam.exceptions.OrderMedicineNotFoundException;
 import com.cg.oam.util.OrderConstants;
 
+/**
+ * @author Gaurav Prasad
+ * @version 
+ * Description This service class contains the implementation of the
+ *          order services like creating the order, viewing order by customer id,
+ *          viewing order by order id
+ */
+
 @Service
 @Transactional
 public class OrderedMedicineImpl implements IOrderedMedicineService{
@@ -38,7 +46,14 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 	@Autowired
 	private ICartDao cartDao;
 	
-	// Create Order
+	/**
+	 * Method: createOrder
+	 * @param OrderMedicineDto medicineDto
+	 * @return Integer i.e., the auto-generated orderId
+	 * Description This method adds the order into the cg_order table accepting the input in object of OrderMedicineDto class 
+	 * 				and returns the orderId of the item added deleting the cart list
+	 **/
+	
 	@Override
 	public Integer createOrder(OrderMedicineDto medicineDto) throws CustomerNotFoundException, EmptyCartException {
 		//updating the table cg_order_medicine
@@ -82,7 +97,14 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 	}
 	
 	
-	//View Order by User Id
+	/**
+	 * Method: viewOrderByCustomerId
+	 * @param Integer custId
+	 * @return List<OrderMedicine>; it returns the list of orderItems purchased by the customer
+	 * Description This method gives us the list of orderItems ordered by the customer identified by CustomerId, and throws 
+	 * 				an Exception if the customer has not placed any order.
+	 **/
+	
 	@Override
 	public List<OrderMedicine> viewOrderByCustomerId(Integer custId) throws OrderMedicineNotFoundException {
 		/**Optional<Customer> optCust = customerDao.viewByCustomerId1(custId);
@@ -98,6 +120,14 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 		//lst.sort((e1,e2)->e1.getOrderDate().compareTo(e2.getOrderDate()));
 		return lst;
 	}
+	
+	/**
+	 * Method: displayOrderDetails
+	 * @param Integer orderId
+	 * @return List<OrderMedicineDetails>; it returns the list of medicineDetails orders placed by the customer
+	 * Description This method gives us the list of orderItems ordered by the customer identified by OrderId, and throws 
+	 * 				an Exception if no order has been placed.
+	 **/
 	
 
 	@Override
