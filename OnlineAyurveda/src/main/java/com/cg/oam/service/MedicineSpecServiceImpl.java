@@ -18,7 +18,6 @@ import com.cg.oam.entities.MedicineSpecifications;
 import com.cg.oam.exceptions.MedicineNotFoundException;
 import com.cg.oam.exceptions.NoSpecsException;
 import com.cg.oam.exceptions.ValidateException;
-import com.cg.oam.util.CustomerConstants;
 import com.cg.oam.util.MedicineSpecificationConstants;
 
 /**
