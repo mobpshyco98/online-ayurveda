@@ -117,7 +117,6 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 		if(lst.isEmpty())
 			throw new OrderMedicineNotFoundException(OrderConstants.ORDER_EMPTY);
 		
-		//lst.sort((e1,e2)->e1.getOrderDate().compareTo(e2.getOrderDate()));
 		return lst;
 	}
 	
@@ -140,8 +139,6 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 		
 		if(orderMediDetails.isEmpty())
 			throw new OrderMedicineNotFoundException(OrderConstants.ORDER_EMPTY);
-		
-		//orderMediDetails.sort((e1,e2)->e1.getOrderMedicineId().compareTo(e2.getOrderMedicineId()));
 		
 		return orderMediDetails;
 	}
