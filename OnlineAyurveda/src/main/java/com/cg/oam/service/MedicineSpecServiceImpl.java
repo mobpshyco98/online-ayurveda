@@ -111,8 +111,9 @@ public class MedicineSpecServiceImpl implements IMedicineSpecService {
 	@Override
 	@Transactional
 	public boolean editSpecs(MedicineSpecificationsDto medSpecsDto) throws MedicineNotFoundException, NoSpecsException, ValidateException {
-		Optional<Medicine> optMed = medDao.findById(medSpecsDto.getMedicineId());
 
+		Optional<Medicine> optMed = medDao.findById(medSpecsDto.getMedicineId());
+		
 		if (!optMed.isPresent()) {
 			logger.error(MedicineSpecificationConstants.MED_ID_WRONG);
 			throw new MedicineNotFoundException(MedicineSpecificationConstants.MED_ID_WRONG);

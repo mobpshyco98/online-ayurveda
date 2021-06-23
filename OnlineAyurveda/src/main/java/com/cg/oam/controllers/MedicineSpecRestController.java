@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,7 +50,8 @@ public class MedicineSpecRestController {
 	 * Description: This methods returns a SuccessMessage along with the medicine ID after adding the medicine specifications in the database
 	 * @CreatedAt: 20-May-2021
 	**/
-
+	
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@PostMapping("addspecs")
 	public SuccessMessage addMedicineSpecs(@Valid @RequestBody MedicineSpecificationsDto medSpecsDto, BindingResult br)
 			throws MedicineNotFoundException, ValidateException {
@@ -74,6 +76,7 @@ public class MedicineSpecRestController {
 	 * @CreatedAt: 20-May-2021
 	**/
 	
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@GetMapping("viewspecs/{med_id}")
 	public List<MedicineSpecifications> getMedicineSpecifications(@PathVariable("med_id") Integer medicineId) throws MedicineNotFoundException, NoSpecsException{
 		return specService.getMedSpecsById(medicineId);
@@ -91,6 +94,7 @@ public class MedicineSpecRestController {
 	 * @CreatedAt: 20-May-2021
 	**/
 	
+	@CrossOrigin(origins = {"http://localhost:4200"})
 	@PutMapping("editspecs")
 	public SuccessMessage editMedicineSpecs(@Valid @RequestBody MedicineSpecificationsDto medSpecsDto, BindingResult br) throws MedicineNotFoundException, NoSpecsException, ValidateException{
 		

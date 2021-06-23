@@ -12,7 +12,7 @@ import com.cg.oam.exceptions.NoSpecsException;
 @RestControllerAdvice
 public class MedicineSpecControllerAdvice {
 	
-	@ExceptionHandler(MedicineNotFoundException.class)
+	@ExceptionHandler({MedicineNotFoundException.class, NoSpecsException.class})
 	@ResponseStatus(code = HttpStatus.NOT_FOUND)
 	public ErrorMessage handleExceptionNoSpecsException(NoSpecsException ex) {
 		return new ErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
