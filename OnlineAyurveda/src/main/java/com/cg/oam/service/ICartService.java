@@ -21,4 +21,6 @@ public interface ICartService {
 	public List<Cart> viewByCustomerId(Integer customerId) throws CustomerNotFoundException;
 
 	public List<Cart> viewAllCartItems() throws EmptyCartException;
+	
+	public Cart getByCartId(Integer cartId) throws CartIdInvalidException;
 }

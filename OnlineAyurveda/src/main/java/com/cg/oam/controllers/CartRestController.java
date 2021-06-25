@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +30,7 @@ import com.cg.oam.exceptions.MedicineNotFoundException;
 import com.cg.oam.exceptions.ValidateException;
 import com.cg.oam.service.ICartService;
 import com.cg.oam.util.CartConstants;
-
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class CartRestController {
 
@@ -90,7 +91,7 @@ public class CartRestController {
 	 * @CreatedAt: 
 	**/
 	
-	@DeleteMapping("removeallmedicinesbycartid/{cartId}") // done
+	@DeleteMapping("removemedicinesbycartid/{cartId}") // done
 	public SuccessMessage removeItemsCartId(@PathVariable Integer cartId) throws CartIdInvalidException {
 		service.removeItemsCartId(cartId);
 		logger.info(CartConstants.REMOVE_BY_CART_ID);
@@ -146,5 +147,10 @@ public class CartRestController {
 			throws CustomerNotFoundException {
 		logger.info(CartConstants.VIEW_ORD_BY_CUST_ID);
 		return service.viewByCustomerId(customerId);
+	}
+	
+	@GetMapping("getByCartId/{cartId}")
+	public Cart getByCartId(@PathVariable Integer cartId) throws CartIdInvalidException {
+		return service.getByCartId(cartId);
 	}
 }

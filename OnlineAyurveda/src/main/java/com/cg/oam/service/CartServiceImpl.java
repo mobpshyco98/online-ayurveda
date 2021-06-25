@@ -159,5 +159,16 @@ public class CartServiceImpl implements ICartService {
 		}
 		return lst;
 	}
+	@Override
+	public Cart getByCartId(Integer cartId) throws CartIdInvalidException {
+		Optional<Cart> cart = cartdao.findById(cartId);
+		if (!cart.isPresent()) {
+			logger.error(CartConstants.INVALID_CART_ID);
+			throw new CartIdInvalidException(CartConstants.INVALID_CART_ID);
+		}
+		return cart.get();
+	}
+	
+	
 
 }
