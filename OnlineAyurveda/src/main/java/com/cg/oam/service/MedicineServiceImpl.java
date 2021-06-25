@@ -94,4 +94,30 @@ public class MedicineServiceImpl implements IMedicineService {
 			throw new MedicineNotFoundException(MedicineConstants.MEDICINE_NOT_FOUND);
 		return optMedicine.get();
 	}
+
+	@Override
+	public boolean editMedicine(MedicineDto medicinedto) throws CategoryNotFoundException {
+		Optional<Category> cat = categorydao.findById(medicinedto.getCategoryId());
+		if(!cat.isPresent())
+			throw new CategoryNotFoundException();
+		Optional<Medicine> med = medicinedao.findById(medicinedto.getMedicineId());
+		Medicine obj = med.get();
+		obj.setMedicineName(medicinedto.getMedicineName());
+		obj.setCompanyName(medicinedto.getCompanyName());
+		obj.setMedicineCost(medicinedto.getMedicineCost());
+		obj.setMfd(medicinedto.getMfd());
+		obj.setExpiryDate(medicinedto.getExpiryDate());
+		obj.setStock(medicinedto.getStock());
+		obj.setCategory(cat.get());
+		return true;
+	}
+
+	@Override
+	public boolean deleteMedicine(Integer medicineId) throws MedicineNotFoundException {
+		Optional<Medicine> med = medicinedao.findById(medicineId);
+		if(!med.isPresent())
+			throw new MedicineNotFoundException();
+		medicinedao.delete(med.get());
+		return true;
+	}
 }

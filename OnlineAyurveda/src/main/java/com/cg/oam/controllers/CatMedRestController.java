@@ -8,11 +8,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.cg.oam.dto.CategoryDto;
 import com.cg.oam.dto.MedicineDto;
@@ -48,6 +52,7 @@ public class CatMedRestController {
 	 * Description: This methods returns a SuccessMessage along with the category ID after adding the customer instances in the database.
 	 * @CreatedAt: 
 	**/
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("addCategory")
 	public SuccessMessage addCategory(@RequestBody CategoryDto categorydto, BindingResult br)
 			throws CategoryNotFoundException {
@@ -65,7 +70,7 @@ public class CatMedRestController {
 	 * Description: This methods returns Category instances .
 	 * @CreatedAt: 
 	**/
-
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewallcategory")
 	public List<Category> viewAllCategory() throws CategoryNotFoundException {
 		List<Category> categoryLst = service.viewAllCategory();
@@ -84,7 +89,7 @@ public class CatMedRestController {
 	 * Description: This methods returns Medicine instances .
 	 * @CreatedAt: 
 	**/
-
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewallmedicinebycategory/{categoryname}")
 	public List<Medicine> getMedicineByCategoryName(@PathVariable("categoryname") String categoryName)
 			throws MedicineNotFoundException, CategoryNameNotFoundException {
@@ -105,6 +110,7 @@ public class CatMedRestController {
 	 * Description: This methods returns medicine instances .
 	 * @CreatedAt: 
 	**/
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping("addMedicinebycategory")
 	public SuccessMessage addMedicine(@Valid @RequestBody MedicineDto medicineDto, BindingResult br) throws CategoryNotFoundException, ValidateException {
 		if(br.hasErrors())
@@ -124,10 +130,26 @@ public class CatMedRestController {
 	 * Description: This methods returns Medicine instances .
 	 * @CreatedAt: 
 	**/
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping("viewmedicinebyid/{medicineid}")
 	public Medicine viewMedicineById(@PathVariable("medicineid") Integer medicineId) throws MedicineNotFoundException {
 		Medicine medicine1 = medicine.getMedicineByMedicineId(medicineId);
 		return medicine1;
 
+	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@PutMapping("editmedicine")
+	public SuccessMessage editMedicine(@RequestBody @Valid MedicineDto meddto, BindingResult br) throws ValidateException, CategoryNotFoundException, MedicineNotFoundException	{
+		if (br.hasErrors())
+			throw new ValidateException(br.getFieldErrors());
+		medicine.editMedicine(meddto);
+		return new SuccessMessage("Medicine edited successfully");
+	}
+	@CrossOrigin(origins = "http://localhost:4200")
+	@DeleteMapping("deleteMedicine/{medicineId}")
+	public SuccessMessage deleteMedicine(@PathVariable ("medicineId") int medicineId) throws MedicineNotFoundException	{
+		medicine.deleteMedicine(medicineId);
+		System.out.println("inside delete");
+		return new SuccessMessage("Medicine deleted successfully");
 	}
 }

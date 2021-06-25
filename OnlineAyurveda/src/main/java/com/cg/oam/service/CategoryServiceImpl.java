@@ -48,7 +48,7 @@ public class CategoryServiceImpl implements ICategoryService {
 	}
 	
 	/**
-	 * Method: viewCustomer
+	 * Method: viewCategory
 	 * @Override: It is used to override the JpaRepository methods for performing CRUD operations.
 	 * @Param CategoryDto catDto
 	 * @return string

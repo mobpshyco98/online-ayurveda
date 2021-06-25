@@ -14,4 +14,8 @@ public interface IMedicineService {
 	public List<Medicine> getMedicineByCategoryName(String categoryName) throws MedicineNotFoundException;
 
 	public Medicine getMedicineByMedicineId(Integer medicineId) throws MedicineNotFoundException;
+	
+	public boolean editMedicine(MedicineDto medicinedto) throws CategoryNotFoundException ;
+	
+	public boolean deleteMedicine(Integer medicineId) throws MedicineNotFoundException;
 }
