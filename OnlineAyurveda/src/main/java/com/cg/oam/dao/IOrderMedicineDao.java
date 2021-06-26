@@ -16,6 +16,6 @@ public interface IOrderMedicineDao extends JpaRepository<OrderMedicine, Integer>
 		@Query("from OrderMedicine o inner join fetch o.customer_order c where c.customerId=:custid ")
 		public List<OrderMedicine> viewOrderByCustId(@Param("custid") Integer custId);
 		
-		@Query("from OrderMedicine o where o.orderId=:ordid ")
-		public Optional<OrderMedicine> findById(@Param("ordid")Integer orderId);
+		//@Query("from OrderMedicine o where o.orderId=:ordid ")
+		//public Optional<OrderMedicine> findById(@Param("ordid")Integer orderId);
 }

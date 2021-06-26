@@ -34,7 +34,7 @@ public class OrderMedicine {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
-	private Customer customer_order = new Customer();
+	private Customer customer_order;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -75,11 +75,4 @@ public class OrderMedicine {
 	public void setCustomer_order(Customer customer_order) {
 		this.customer_order = customer_order;
 	}
-
-//	@Override
-//	public String toString() {
-//		// TODO Auto-generated method stub
-//		return super.toString();
-//	}
-
 }

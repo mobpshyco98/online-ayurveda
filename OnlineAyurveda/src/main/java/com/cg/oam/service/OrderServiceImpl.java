@@ -41,7 +41,8 @@ public class OrderServiceImpl implements IOrderService {
 		Optional<OrderMedicine> obj = orderMedDao.findById(orderId);
 		if (!obj.isPresent())
 			throw new OrderIdInvalidException(OrderMedicineConstants.ORDER_ID_INVALID);
-		orderMedDao.delete(obj.get());
+		OrderMedicine order = obj.get();
+		order.setOrderStatus(OrderMedicineConstants.ORDER_STATUS_CANCELLED);
 		return true;
 	}
 
