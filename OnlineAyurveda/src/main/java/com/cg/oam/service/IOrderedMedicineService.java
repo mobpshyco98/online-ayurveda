@@ -7,7 +7,6 @@ import com.cg.oam.entities.OrderMedicine;
 import com.cg.oam.entities.OrderMedicineDetails;
 import com.cg.oam.exceptions.CustomerNotFoundException;
 import com.cg.oam.exceptions.EmptyCartException;
-import com.cg.oam.exceptions.OrderIdInvalidException;
 import com.cg.oam.exceptions.OrderMedicineNotFoundException;
 
 public interface IOrderedMedicineService {
@@ -17,8 +16,4 @@ public interface IOrderedMedicineService {
 	public List<OrderMedicine> viewOrderByCustomerId(Integer custId) throws OrderMedicineNotFoundException;
 	
 	public List<OrderMedicineDetails> displayOrderDetails(Integer orderId) throws OrderMedicineNotFoundException;
-	
-	public List<OrderMedicine> viewAllOrders() throws EmptyCartException;
-	
-	public boolean deleteByOrderId(Integer orderId) throws OrderIdInvalidException;
 }

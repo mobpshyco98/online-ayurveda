@@ -8,6 +8,4 @@ public class OrderConstants {
 	public static final String ORDER_CREATED="Your Order Is Created And Id Is ";
 	public static final String ORDER_EMPTY="No Order Placed";
 	public static final String ORDER_NOT_FOUND="No Order Found";
-	public static final String REMOVE_BY_ORDER_ID = "removing all orders by order_id";
-	public static final String DELETE_SUCCESS_ORDER_ID =  "Order deleted for order_id ";
 }

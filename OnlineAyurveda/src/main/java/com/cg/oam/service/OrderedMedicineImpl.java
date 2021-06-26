@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +21,6 @@ import com.cg.oam.entities.OrderMedicine;
 import com.cg.oam.entities.OrderMedicineDetails;
 import com.cg.oam.exceptions.CustomerNotFoundException;
 import com.cg.oam.exceptions.EmptyCartException;
-import com.cg.oam.exceptions.OrderIdInvalidException;
 import com.cg.oam.exceptions.OrderMedicineNotFoundException;
 import com.cg.oam.util.OrderConstants;
 
@@ -48,8 +45,6 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 	private IMedicineDao medicineDao;
 	@Autowired
 	private ICartDao cartDao;
-	
-	Logger logger = LoggerFactory.getLogger(OrderedMedicineImpl.class);
 	
 	/**
 	 * Method: createOrder
@@ -147,45 +142,5 @@ public class OrderedMedicineImpl implements IOrderedMedicineService{
 		
 		return orderMediDetails;
 	}
-	
-	/**
-	 * Method: viewAllOrders
-	 * @param  
-	 * @return List<OrderMedcine>; it returns ALL orderItems from all customers
-	 * Description This method gives us the list of orderItems all the items added to cart by all customers
-	 **/
-	
-	@Override
-	public List<OrderMedicine> viewAllOrders() throws EmptyCartException {
-		List<OrderMedicine> lst = orderMedicineDao.findAll();
-		if (lst.isEmpty()) {
-			logger.error(OrderConstants.ORDER_EMPTY);
-			throw new EmptyCartException(OrderConstants.ORDER_EMPTY);
-		}
-		return lst;
-	}
-	
-	/**
-	 * Method: deleteByOrderId
-	 * @param Integer orderId
-	 * @return Boolean returns true if removed successfully else throws OrderIdInvalidException
-	 * Description This method removes the items by cartId throws exception if OrderId is not found in cg_order table.
-	 * 
-	 **/
-
-	@Override
-	public boolean deleteByOrderId(Integer orderId) throws OrderIdInvalidException {
-		
-		List<OrderMedicineDetails> orderMedicineDetails = orderMedcineDetailDao.getMedicineDetailsInOrder(orderId);
-		orderMedcineDetailDao.deleteAll(orderMedicineDetails);		
-		
-		Optional<OrderMedicine> obj = orderMedicineDao.findById(orderId);
-		if (!obj.isPresent()) {
-			logger.error(OrderConstants.ORDER_NOT_FOUND);
-			throw new OrderIdInvalidException(OrderConstants.ORDER_NOT_FOUND);
-		}
-		orderMedicineDao.delete(obj.get());
-		return true;
-	}	
 
 }
