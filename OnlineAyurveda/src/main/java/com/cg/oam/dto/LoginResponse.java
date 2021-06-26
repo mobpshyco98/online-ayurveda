@@ -5,6 +5,13 @@ public class LoginResponse {
 	private String token;
 	private String userName;
 	private String role;
+	private Integer userId; 
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 	public String getToken() {
 		return token;
 	}

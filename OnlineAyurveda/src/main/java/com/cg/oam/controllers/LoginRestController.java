@@ -47,6 +47,7 @@ public class LoginRestController {
 		response.setToken(service.generateToken(login));
 		response.setUserName(login.getUserName());
 		response.setRole(login.getRole());
+		response.setUserId(login.getCustomerId());
 		return response;
 	}
 	
