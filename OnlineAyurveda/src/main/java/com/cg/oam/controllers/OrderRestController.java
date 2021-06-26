@@ -1,6 +1,7 @@
 package com.cg.oam.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import com.cg.oam.util.OrderMedicineConstants;
  * Description - This controller class contains methods for canceling an order by orderId
  **/
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class OrderRestController {
 
@@ -32,7 +34,7 @@ public class OrderRestController {
 	 * Description: This methods returns a SuccessMessage after canceling an order using orderId 
 	 * @CreatedAt: 21-May-2021
 	**/
-
+	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping("removeorder/{orderid}")
 	public SuccessMessage removeItemsByOrderId(@PathVariable Integer orderid) throws OrderIdInvalidException {
 		service.removeItemsByOrderId(orderid);
